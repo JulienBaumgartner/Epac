@@ -131,11 +131,14 @@
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ObjFile.cpp" />
+    <ClCompile Include="EventsManagerExample.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Image.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="ObjFile.h" />
+    <ClInclude Include="EventsManagerExample.h" />
+    <ClInclude Include="EventsManagerInterface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
