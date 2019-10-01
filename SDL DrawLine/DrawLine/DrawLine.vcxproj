@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Image.h" />
+    <ClInclude Include="Algebra.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="ObjFile.h" />
     <ClInclude Include="EventsManagerExample.h" />
