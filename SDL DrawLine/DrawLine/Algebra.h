@@ -1,14 +1,305 @@
 #pragma once
+#define _USE_MATH_DEFINES
+#include <math.h>
 #include <cmath>
 #include <iostream>
 
 namespace algebra
 {
 	template <typename T>
+	class Vec2
+	{
+	public:
+		Vec2(T x, T y) : x_(x), y_(y) {}
+		bool operator==(const Vec2<T>& vec) const
+		{
+			return (x_ == vec.x_ && y_ == vec.y_);
+		}
+		bool operator!=(const Vec2<T>& vec) const
+		{
+			return (x_ != vec.x_ || y_ != vec.y_);
+		}
+		bool operator>(const Vec2<T>& vec) const
+		{
+			return double_length() > vec.double_length();
+		}
+		bool operator<(const Vec2<T>& vec) const
+		{
+			return double_length() < vec.double_length();
+		}
+		bool operator>=(const Vec2<T>& vec) const
+		{
+			return double_length() >= vec.double_length();
+		}
+		bool operator<=(const Vec2<T>& vec) const
+		{
+			return double_length() <= vec.double_length();
+		}
+		Vec2<T> operator=(const Vec2<T>& vec)
+		{
+			x_ = vec.x_;
+			y_ = vec.y_;
+			return *this;
+		}
+		Vec2<T> operator+(T s) const
+		{
+			Vec2<T> vec(x_, y_);
+			vec += s;
+			return vec;
+		}
+		Vec2<T> operator-(T s) const
+		{
+			Vec2<T> vec(x_, y_);
+			vec -= s;
+			return vec;
+		}
+		Vec2<T> operator*(T s) const
+		{
+			Vec2<T> vec(x_, y_);
+			vec *= s;
+			return vec;
+		}
+		Vec2<T> operator/(T s) const
+		{
+			Vec2<T> vec(x_, y_);
+			vec /= s;
+			return vec;
+		}
+		Vec2<T> operator+=(T s)
+		{
+			x_ += s;
+			y_ += s;
+			return *this;
+		}
+		Vec2<T> operator-=(T s)
+		{
+			x_ -= s;
+			y_ -= s;
+			return *this;
+		}
+		Vec2<T> operator*=(T s)
+		{
+			x_ *= s;
+			y_ *= s;
+			return *this;
+		}
+		Vec2<T> operator/=(T s)
+		{
+			x_ /= s;
+			y_ /= s;
+			return *this;
+		}
+		Vec2<T> operator+(const Vec2<T>& vec) const
+		{
+			Vec2<T> v(x_, y_);
+			v.x_ += vec.x_;
+			v.y_ += vec.y_;
+			return v;
+		}
+		Vec2<T> operator-(const Vec2<T>& vec) const
+		{
+			Vec2<T> v(x_, y_);
+			v.x_ -= vec.x_;
+			v.y_ -= vec.y_;
+			return v;
+		}
+		T operator*(const Vec2<T>& vec) const
+		{
+			return x_ * vec.x_ + y_ * vec.y_;
+		}
+
+
+		T length() const
+		{
+			return std::sqrt(double_length());
+		}
+
+		T double_length() const
+		{
+			return x_ * x_ + y_ * y_;
+		}
+
+		Vec2<T> normalize() const
+		{
+			Vec2<T> n(x_, y_);
+			const T len = length();
+			n.x_ /= len;
+			n.y_ /= len;
+			return n;
+		}
+
+		friend std::ostream& operator<<(std::ostream& out, const Vec2<T>& v)
+		{
+			out << "{" << v.x_ << ", " << v.y_ << "}\n";
+			return out;
+		}
+		T x_;
+		T y_;
+	};
+
+	template <typename T>
+	class Vec3
+	{
+	public:
+		Vec3() : x_(0), y_(0), z_(0) {}
+		Vec3(T x, T y, T z) : x_(x), y_(y), z_(z) {}
+		Vec3(const Vec3<T>& v) : x_(v.x_), y_(v.y_), z_(v.z_) {}
+
+		bool operator==(const Vec3<T>& vec) const
+		{
+			return (x_ == vec.x_ && y_ == vec.y_ &&
+				z_ == vec.z_);
+		}
+		bool operator!=(const Vec3<T>& vec) const
+		{
+			return (x_ != vec.x_ || y_ != vec.y_ ||
+				z_ != vec.z_);
+		}
+		bool operator>(const Vec3<T>& vec) const
+		{
+			return double_length() > vec.double_length();
+		}
+		bool operator<(const Vec3<T>& vec) const
+		{
+			return double_length() < vec.double_length();
+		}
+		bool operator>=(const Vec3<T>& vec) const
+		{
+			return double_length() >= vec.double_length();
+		}
+		bool operator<=(const Vec3<T>& vec) const
+		{
+			return double_length() <= vec.double_length();
+		}
+
+		Vec3<T> operator=(const Vec3<T>& vec)
+		{
+			x_ = vec.x_;
+			y_ = vec.y_;
+			z_ = vec.z_;
+			return *this;
+		}
+		Vec3<T> operator+(T s) const
+		{
+			Vec3<T> vec(x_, y_, z_);
+			vec += s;
+			return vec;
+		}
+
+		Vec3<T> operator-(T s) const
+		{
+			Vec3<T> vec(x_, y_, z_);
+			vec -= s;
+			return vec;
+		}
+
+		Vec3<T> operator*(T s) const
+		{
+			Vec3<T> vec(x_, y_, z_);
+			vec *= s;
+			return vec;
+		}
+		Vec3<T> operator/(T s) const
+		{
+			Vec3<T> vec(x_, y_, z_);
+			vec /= s;
+			return vec;
+		}
+		Vec3<T> operator+=(T s)
+		{
+			x_ += s;
+			y_ += s;
+			z_ += s;
+			return *this;
+		}
+		Vec3<T> operator-=(T s)
+		{
+			x_ -= s;
+			y_ -= s;
+			z_ -= s;
+			return *this;
+		}
+		Vec3<T> operator*=(T s)
+		{
+			x_ *= s;
+			y_ *= s;
+			z_ *= s;
+			return *this;
+		}
+		Vec3<T> operator/=(T s)
+		{
+			x_ /= s;
+			y_ /= s;
+			z_ /= s;
+			return *this;
+		}
+		Vec3<T> operator+(const Vec3<T>& vec) const
+		{
+			Vec3<T> v(x_, y_, z_);
+			v.x_ += vec.x_;
+			v.y_ += vec.y_;
+			v.z_ += vec.z_;
+			return v;
+		}
+		Vec3<T> operator-(const Vec3<T>& vec) const
+		{
+			Vec3<T> v(x_, y_, z_);
+			v.x_ -= vec.x_;
+			v.y_ -= vec.y_;
+			v.z_ -= vec.z_;
+			return v;
+		}
+		T operator*(const Vec3<T>& vec) const
+		{
+			return x_ * vec.x_ + y_ * vec.y_ + z_ * vec.z_;
+		}
+		Vec3<T> operator^(const Vec3<T>& vec) const
+		{
+			return Vec3<T>(
+				y_ * vec.z_ - z_ * vec.y_,
+				z_ * vec.x_ - x_ * vec.z_,
+				x_ * vec.y_ - y_ * vec.x_);
+		}
+
+
+		T length() const
+		{
+			return std::sqrt(double_length());
+		}
+
+		T double_length() const
+		{
+			return x_ * x_ + y_ * y_ + z_ * z_;
+		}
+
+		Vec3<T> normalize() const
+		{
+			Vec3<T> n(x_, y_, z_);
+			const T len = length();
+			n.x_ /= len;
+			n.y_ /= len;
+			n.z_ /= len;
+			return n;
+		}
+
+		friend std::ostream& operator<<(std::ostream& out, const Vec3<T>& v)
+		{
+			out << "{" << v.x_ << ", " << v.y_ << ", " << v.z_ << "}\n";
+			return out;
+		}
+
+		T x_;
+		T y_;
+		T z_;
+	};
+
+
+	template <typename T>
 	class Vec4
 	{
 	public:
 		Vec4(T x, T y, T z, T w) : x_(x), y_(y), z_(z), w_(w) {}
+		Vec4(const Vec3<T>& v) : x_(v.x_), y_(v.y_), z_(v.z_), w_(1) {}
 		bool operator==(const Vec4<T>& vec) const
 		{
 			return (x_ == vec.x_ && y_ == vec.y_ &&
@@ -149,299 +440,14 @@ namespace algebra
 			out << "{" << v.x_ << ", " << v.y_ << ", " << v.z_ << ", " << v.w_ << "}\n";
 			return out;
 		}
-	protected:
+
 		T x_;
 		T y_;
 		T z_;
 		T w_;
 	};
 
-	template <typename T>
-	class Vec3
-	{
-	public:
-		Vec3(T x, T y, T z) : x_(x), y_(y), z_(z) {}
-		
-		bool operator==(const Vec3<T>& vec) const
-		{
-			return (x_ == vec.x_ && y_ == vec.y_ &&
-				z_ == vec.z_);
-		}
-		bool operator!=(const Vec3<T>& vec) const
-		{
-			return (x_ != vec.x_ || y_ != vec.y_ ||
-				z_ != vec.z_);
-		}
-		bool operator>(const Vec3<T>& vec) const 
-		{ 
-			return double_length() > vec.double_length(); 
-		}
-		bool operator<(const Vec3<T>& vec) const 
-		{ 
-			return double_length() < vec.double_length(); 
-		}
-		bool operator>=(const Vec3<T>& vec) const 
-		{ 
-			return double_length() >= vec.double_length(); 
-		}
-		bool operator<=(const Vec3<T>& vec) const 
-		{ 
-			return double_length() <= vec.double_length(); 
-		}
-
-		Vec3<T> operator=(const Vec3<T>& vec)
-		{
-			x_ = vec.x_;
-			y_ = vec.y_;
-			z_ = vec.z_;
-			return *this;
-		}
-		Vec3<T> operator+(T s) const
-		{
-			Vec3<T> vec(x_, y_, z_);
-			vec += s;
-			return vec;
-		}
-		Vec3<T> operator-(T s)
-		{
-			Vec3<T> vec(x_, y_, z_);
-			vec -= s;
-			return vec;
-		}
-		Vec3<T> operator*(T s)
-		{
-			Vec3<T> vec(x_, y_, z_);
-			vec *= s;
-			return vec;
-		}
-		Vec3<T> operator/(T s)
-		{
-			Vec3<T> vec(x_, y_, z_);
-			vec /= s;
-			return vec;
-		}
-		Vec3<T> operator+=(T s)
-		{
-			x_ += s;
-			y_ += s;
-			z_ += s;
-			return *this;
-		}
-		Vec3<T> operator-=(T s)
-		{
-			x_ -= s;
-			y_ -= s;
-			z_ -= s;
-			return *this;
-		}
-		Vec3<T> operator*=(T s)
-		{
-			x_ *= s;
-			y_ *= s;
-			z_ *= s;
-			return *this;
-		}
-		Vec3<T> operator/=(T s)
-		{
-			x_ /= s;
-			y_ /= s;
-			z_ /= s;
-			return *this;
-		}
-		Vec3<T> operator+(const Vec3<T>& vec) const
-		{
-			Vec3<T> v(x_, y_, z_);
-			v.x_ += vec.x_;
-			v.y_ += vec.y_;
-			v.z_ += vec.z_;
-			return v;
-		}
-		Vec3<T> operator-(const Vec3<T>& vec) const
-		{
-			Vec3<T> v(x_, y_, z_);
-			v.x_ -= vec.x_;
-			v.y_ -= vec.y_;
-			v.z_ -= vec.z_;
-			return v;
-		}
-		T operator*(const Vec3<T>& vec) const
-		{
-			return x_ * vec.x_ + y_ * vec.y_ + z_ * vec.z_;
-		}
-		Vec3<T> operator^(const Vec3<T>& vec) const
-		{
-			return Vec3<T>(
-				y_ * vec.z_ - z_ * vec.y_,
-				z_ * vec.x_ - x_ * vec.z_,
-				x_ * vec.y_ - y_ * vec.x_);
-		}
-
-
-		T length() const
-		{
-			return std::sqrt(double_length());
-		}
-
-		T double_length() const
-		{
-			return x_ * x_ + y_ * y_ + z_ * z_;
-		}
-
-		Vec3<T> normalize() const
-		{
-			Vec3<T> n(x_, y_, z_);
-			const T len = length();
-			n.x_ /= len;
-			n.y_ /= len;
-			n.z_ /= len;
-			return n;
-		}
-
-
-		friend std::ostream& operator<<(std::ostream& out, const Vec3<T>& v)
-		{
-			out << "{" << v.x_ << ", " << v.y_ << ", " << v.z_ << "}\n";
-			return out;
-		}
-
-		T x_;
-		T y_;
-		T z_;
-	protected:
-	};
-
-	template <typename T>
-	class Vec2
-	{
-	public:
-		Vec2(T x, T y) : x_(x), y_(y) {}
-		bool operator==(const Vec2<T>& vec) const
-		{
-			return (x_ == vec.x_ && y_ == vec.y_);
-		}
-		bool operator!=(const Vec2<T>& vec) const
-		{
-			return (x_ != vec.x_ || y_ != vec.y_);
-		}
-		bool operator>(const Vec2<T>& vec) const
-		{ 
-			return double_length() > vec.double_length(); 
-		}
-		bool operator<(const Vec2<T>& vec) const 
-		{ 
-			return double_length() < vec.double_length(); 
-		}
-		bool operator>=(const Vec2<T>& vec) const 
-		{ 
-			return double_length() >= vec.double_length();
-		}
-		bool operator<=(const Vec2<T>& vec) const 
-		{ 
-			return double_length() <= vec.double_length(); 
-		}
-		Vec2<T> operator=(const Vec2<T>& vec)
-		{
-			x_ = vec.x_;
-			y_ = vec.y_;
-			return *this;
-		}
-		Vec2<T> operator+(T s) const
-		{
-			Vec2<T> vec(x_, y_);
-			vec += s;
-			return vec;
-		}
-		Vec2<T> operator-(T s) const
-		{
-			Vec2<T> vec(x_, y_);
-			vec -= s;
-			return vec;
-		}
-		Vec2<T> operator*(T s) const
-		{
-			Vec2<T> vec(x_, y_);
-			vec *= s;
-			return vec;
-		}
-		Vec2<T> operator/(T s) const
-		{
-			Vec2<T> vec(x_, y_);
-			vec /= s;
-			return vec;
-		}
-		Vec2<T> operator+=(T s)
-		{
-			x_ += s;
-			y_ += s;
-			return *this;
-		}
-		Vec2<T> operator-=(T s)
-		{
-			x_ -= s;
-			y_ -= s;
-			return *this;
-		}
-		Vec2<T> operator*=(T s)
-		{
-			x_ *= s;
-			y_ *= s;
-			return *this;
-		}
-		Vec2<T> operator/=(T s)
-		{
-			x_ /= s;
-			y_ /= s;
-			return *this;
-		}
-		Vec2<T> operator+(const Vec2<T>& vec) const
-		{
-			Vec2<T> v(x_, y_);
-			v.x_ += vec.x_;
-			v.y_ += vec.y_;
-			return v;
-		}
-		Vec2<T> operator-(const Vec2<T>& vec) const
-		{
-			Vec2<T> v(x_, y_);
-			v.x_ -= vec.x_;
-			v.y_ -= vec.y_;
-			return v;
-		}
-		T operator*(const Vec2<T>& vec) const
-		{
-			return x_ * vec.x_ + y_ * vec.y_;
-		}
-
-
-		T length() const
-		{
-			return std::sqrt(double_length());
-		}
-
-		T double_length() const
-		{
-			return x_ * x_ + y_ * y_;
-		}
-
-		Vec2<T> normalize() const
-		{
-			Vec2<T> n(x_, y_);
-			const T len = length();
-			n.x_ /= len;
-			n.y_ /= len;
-			return n;
-		}
-
-		friend std::ostream& operator<<(std::ostream& out, const Vec2<T>& v)
-		{
-			out << "{" << v.x_ << ", " << v.y_ << "}\n";
-			return out;
-		}
-	protected:
-		T x_;
-		T y_;
-	};
-
+	
 
 	template <typename T>
 	class Matrix2
@@ -550,7 +556,6 @@ namespace algebra
 			return out;
 		}
 
-	protected:
 		T m11_;
 		T m12_;
 		T m21_;
@@ -727,8 +732,27 @@ namespace algebra
 			return out;
 		}
 
+		static Matrix3<T> rotateMatrixX(T degree) {
+			T rad = degree * M_PI / 180;
+			return Matrix3(1, 0, 0,
+				0, std::cos(rad), -std::sin(rad),
+				0, std::sin(rad), std::cos(rad));
+		}
 
-	protected:
+		static Matrix3<T> rotateMatrixY(T degree) {
+			T rad = degree * M_PI / 180;
+			return Matrix3(std::cos(rad), 0, std::sin(rad),
+				0, 1, 0,
+				-std::sin(rad), 0, std::cos(rad));
+		}
+
+		static Matrix3<T> rotateMatrixZ(T degree) {
+			T rad = degree * M_PI / 180;
+			return Matrix3(std::cos(rad), -std::sin(rad), 0,
+				std::sin(rad), std::cos(rad), 0,
+				0, 0, 1);
+		}
+
 		T m11_;
 		T m12_;
 		T m13_;
@@ -1016,7 +1040,13 @@ namespace algebra
 			return out;
 		}
 
-	protected:
+		static Matrix4<T> projectionMatrix(T w, T h, T zn, T zf, T fov) {
+			return Matrix4((h/w)*1/ std::tan(fov/2), 0, 0, 0,
+				            0, 1/ std::tan(fov/2), 0, 0,
+				            0, 0, zf/(zf-zn), 1,
+				            0, 0, -zf*zn/(zf-zn), 0);
+		}
+
 		T m11_;
 		T m12_;
 		T m13_;
@@ -1033,8 +1063,6 @@ namespace algebra
 		T m42_;
 		T m43_;
 		T m44_;
-
-
 	};
 
 	template <typename T>
@@ -1119,7 +1147,6 @@ namespace algebra
 			return out;
 		}
 		
-	protected:
 		T x_;
 		T y_;
 		T z_;
@@ -1129,62 +1156,37 @@ namespace algebra
 
 
 	template <typename T>
-	Matrix2<T> operator*(const Vec2<T>& v, const Matrix2<T>& m)
+	Vec2<T> operator*(const Vec2<T>& v, const Matrix2<T>& m)
 	{
-		const Matrix2<T> newMat(*this);
-		newMat.m11_ = Vec2<T>(m.m11_, m.m21_)*v;
-		newMat.m12_ = Vec2<T>(m.m12_, m.m22_)*v; 
-		newMat.m21_ = Vec2<T>(m.m11_, m.m21_)*v;
-		newMat.m22_ = Vec2<T>(m.m12_, m.m22_)*v;
+		Vec2<T> newVec(v);
+		newVec.x_ = Vec2<T>(m.m11_, m.m21_)*v;
+		newVec.y_ = Vec2<T>(m.m12_, m.m22_)*v;
 
-		return newMat;
+		return newVec;
 	}
 
 	template <typename T>
-	Matrix3<T> operator*(const Vec3<T>& v, const Matrix3<T>& m)
+	Vec3<T> operator*(const Vec3<T>& v, const Matrix3<T>& m)
 	{
-		const Matrix3<T> newMat(*this);
-		newMat.m11_ = Vec3<T>(m.m11_, m.m21_, m.m31_)*v;
-		newMat.m12_ = Vec3<T>(m.m12_, m.m22_, m.m32_)*v;
-		newMat.m13_ = Vec3<T>(m.m13_, m.m23_, m.m33_)*v;
+		Vec3<T> newVec(v);
+		newVec.x_ = Vec3<T>(m.m11_, m.m21_, m.m31_)*v;
+		newVec.y_ = Vec3<T>(m.m12_, m.m22_, m.m32_)*v;
+		newVec.z_ = Vec3<T>(m.m13_, m.m23_, m.m33_)*v;
 
-		newMat.m21_ = Vec3<T>(m.m11_, m.m21_, m.m31_)*v;
-		newMat.m22_ = Vec3<T>(m.m12_, m.m22_, m.m32_)*v;
-		newMat.m23_ = Vec3<T>(m.m13_, m.m23_, m.m33_)*v;
-
-		newMat.m31_ = Vec3<T>(m.m11_, m.m21_, m.m31_)*v;
-		newMat.m32_ = Vec3<T>(m.m12_, m.m22_, m.m32_)*v;
-		newMat.m33_ = Vec3<T>(m.m13_, m.m23_, m.m33_)*v;
-
-		return newMat;
+		return newVec;
 	}
 
 	template <typename T>
-	Matrix4<T> operator*(const Vec4<T>& v, const Matrix4<T>& m)
+	Vec4<T> operator*(const Vec4<T>& v, const Matrix4<T>& m)
 	{
-		const Matrix4<T> newMat(*this);
+		Vec4<T> newVec(v);
+		
+		newVec.x_ = Vec4<T>(m.m11_, m.m21_, m.m31_, m.m41_)*v;
+		newVec.y_ = Vec4<T>(m.m12_, m.m22_, m.m32_, m.m42_)*v;
+		newVec.z_ = Vec4<T>(m.m13_, m.m23_, m.m33_, m.m43_)*v;
+		newVec.w_ = Vec4<T>(m.m14_, m.m24_, m.m34_, m.m44_)*v;
 
-		newMat.m11_ = Vec4<T>(m.m11_, m.m21_, m.m31_, m.m41_)*v;
-		newMat.m12_ = Vec4<T>(m.m12_, m.m22_, m.m32_, m.m42_)*v;
-		newMat.m13_ = Vec4<T>(m.m13_, m.m23_, m.m33_, m.m43_)*v;
-		newMat.m14_ = Vec4<T>(m.m14_, m.m24_, m.m34_, m.m44_)*v;
-
-		newMat.m21_ = Vec4<T>(m.m11_, m.m21_, m.m31_, m.m41_)*v;
-		newMat.m22_ = Vec4<T>(m.m12_, m.m22_, m.m32_, m.m42_)*v;
-		newMat.m23_ = Vec4<T>(m.m13_, m.m23_, m.m33_, m.m43_)*v;
-		newMat.m24_ = Vec4<T>(m.m14_, m.m24_, m.m34_, m.m44_)*v;
-
-		newMat.m31_ = Vec4<T>(m.m11_, m.m21_, m.m31_, m.m41_)*v;
-		newMat.m32_ = Vec4<T>(m.m12_, m.m22_, m.m32_, m.m42_)*v;
-		newMat.m33_ = Vec4<T>(m.m13_, m.m23_, m.m33_, m.m43_)*v;
-		newMat.m34_ = Vec4<T>(m.m14_, m.m24_, m.m34_, m.m44_)*v;
-
-		newMat.m41_ = Vec4<T>(m.m11_, m.m21_, m.m31_, m.m41_)*v;
-		newMat.m42_ = Vec4<T>(m.m12_, m.m22_, m.m32_, m.m42_)*v;
-		newMat.m43_ = Vec4<T>(m.m13_, m.m23_, m.m33_, m.m43_)*v;
-		newMat.m44_ = Vec4<T>(m.m14_, m.m24_, m.m34_, m.m44_)*v;
-
-		return newMat;
+		return newVec;
 	}
 
 }

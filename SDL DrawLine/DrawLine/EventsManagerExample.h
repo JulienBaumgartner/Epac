@@ -1,10 +1,11 @@
 #pragma once
 #include "EventsManagerInterface.h"
+#include "Camera.h"
 
 class EventsManagerExample : public EventsManagerInterface
 {
 public:
-	bool manage_events(Image& image, SDL_Event event) override;
+	bool manage_events(Image& image, SDL_Event event, Camera& camera) override;
 private:
 	int x1 = -1;
 	int x2 = -1;

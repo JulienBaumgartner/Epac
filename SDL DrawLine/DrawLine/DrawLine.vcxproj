@@ -127,15 +127,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ObjFile.cpp" />
     <ClCompile Include="EventsManagerExample.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Algebra.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Pixel.h" />
+    <ClInclude Include="Vertex.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="ObjFile.h" />
     <ClInclude Include="EventsManagerExample.h" />

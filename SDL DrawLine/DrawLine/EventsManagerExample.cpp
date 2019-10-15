@@ -1,20 +1,45 @@
 #include "EventsManagerExample.h"
 #include <stdio.h>
 
-bool EventsManagerExample::manage_events(Image& image, SDL_Event event)
+bool EventsManagerExample::manage_events(Image& image, SDL_Event event, Camera& camera)
 {
+	algebra::Vec3<float> v_look_dir;
 	switch (event.type)
 	{
 	case SDL_KEYDOWN:
 		printf("key pressed: %s\n", SDL_GetKeyName(event.key.keysym.sym));
-		if (event.key.keysym.sym == SDLK_ESCAPE)
-		{
+		switch(event.key.keysym.sym) {
+		case SDLK_ESCAPE:
 			return false;
+		case SDLK_w:
+			camera.position = camera.position - camera.target.normalize()*0.01f;
+			break;
+		case SDLK_s:
+			camera.position = camera.position + camera.target.normalize()*0.01f;
+			break;
+		case SDLK_a:
+			v_look_dir = (camera.target - camera.position) * algebra::Matrix3<float>::rotateMatrixY(1);
+			camera.target = camera.position + v_look_dir;
+			break;
+		case SDLK_d:
+			v_look_dir = (camera.target - camera.position) * algebra::Matrix3<float>::rotateMatrixY(-1);
+			camera.target = camera.position + v_look_dir;
+			break;
+		case SDLK_o:
+			camera.position.z_ += 0.1f;
+			//camera.target.z_ += 0.1f;
+			break;
+		case SDLK_p:
+			camera.position.z_ -= 0.1f;
+			//camera.target.z_ -= 0.1f;
+			break;
 		}
+
+		printf("kcamera: {%f, %f, %f}\n", camera.position.x_, camera.position.y_, camera.position.z_);
 		draw = !draw;
 		break;
 	case SDL_MOUSEMOTION:
-		if (draw)
+		if (draw && x1 != -1)
 		{
 			x2 = event.motion.x;
 			y2 = event.motion.y;
