@@ -4,6 +4,7 @@
 bool EventsManagerExample::manage_events(Image& image, SDL_Event event, Camera& camera)
 {
 	algebra::Vec3<float> v_look_dir;
+	algebra::Vec3<float> forward;
 	switch (event.type)
 	{
 	case SDL_KEYDOWN:
@@ -12,10 +13,15 @@ bool EventsManagerExample::manage_events(Image& image, SDL_Event event, Camera& 
 		case SDLK_ESCAPE:
 			return false;
 		case SDLK_w:
-			camera.position = camera.position - camera.target.normalize()*0.01f;
+			forward = (camera.position - camera.target).normalize() * 0.1f;
+			camera.position = camera.position - forward;
+			camera.target = camera.target - forward;
+			//camera.target = (camera.position - camera.target).normalize()*0.01f;
 			break;
 		case SDLK_s:
-			camera.position = camera.position + camera.target.normalize()*0.01f;
+			forward = (camera.position - camera.target).normalize() * 0.1f;
+			camera.position = camera.position + forward;
+			camera.target = camera.target + forward;
 			break;
 		case SDLK_a:
 			v_look_dir = (camera.target - camera.position) * algebra::Matrix3<float>::rotateMatrixY(1);
@@ -35,7 +41,8 @@ bool EventsManagerExample::manage_events(Image& image, SDL_Event event, Camera& 
 			break;
 		}
 
-		printf("kcamera: {%f, %f, %f}\n", camera.position.x_, camera.position.y_, camera.position.z_);
+		printf("camera: {%f, %f, %f}\n", camera.position.x_, camera.position.y_, camera.position.z_);
+		printf("look at: {%f, %f, %f}\n", camera.target.x_ - camera.position.x_, camera.target.y_ - camera.position.y_, camera.target.z_ - camera.position.z_);
 		draw = !draw;
 		break;
 	case SDL_MOUSEMOTION:

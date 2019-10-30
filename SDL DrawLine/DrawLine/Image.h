@@ -20,5 +20,7 @@ public:
 	void drawTriangle(Camera& camera, Pixel color1, const algebra::Vec3<float>& vec1, Pixel color2, const algebra::Vec3<float>& vec2, Pixel color3, const algebra::Vec3<float>& vec3);
 	void drawMesh(const Mesh& mesh, const algebra::Matrix4<float>& m_view, Camera& camera);
 	void fillTriangle(Vertex a, Vertex b, Vertex c);
+protected:
+	bool isVisible(Camera& camera, const algebra::Vec3<float>& vec1, const algebra::Vec3<float>& vec2, const algebra::Vec3<float>& vec3, const algebra::Vec3<float>& pos);
 };
 

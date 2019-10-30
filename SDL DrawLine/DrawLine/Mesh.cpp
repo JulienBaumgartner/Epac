@@ -16,7 +16,7 @@ Mesh::~Mesh()
 
 
 std::vector<algebra::Vec3<float>> Mesh::project(const std::vector<algebra::Vec3<float>>& points, int w, int h, const algebra::Matrix4<float>& m_view) const{
-	algebra::Matrix4<float> projection = algebra::Matrix4<float>::projectionMatrix(w, h, 0.1, 10000, 90 *M_PI /180);
+	algebra::Matrix4<float> projection = algebra::Matrix4<float>::projectionMatrix(w, h, 0.1, 10000, 120 *M_PI /180);
 	std::vector<algebra::Vec3<float>> projectedPoints;
 
 	for (int i = 0; i < points.size(); i++) {
@@ -64,7 +64,12 @@ bool Mesh::ExtractObj(const std::string & path)
 
 				points_.push_back(algebra::Vec3<float>(std::stof(splitStr[1]),
 					std::stof(splitStr[2]), std::stof(splitStr[3]))); 
-				colors_.push_back({ 255,255,255,255 });
+				Pixel p;
+				p.a = 255;
+				p.r = rand() % 256;
+				p.g = rand() % 256;
+				p.b = rand() % 256;
+				colors_.push_back(p);
 
 				break;
 			case 'f':

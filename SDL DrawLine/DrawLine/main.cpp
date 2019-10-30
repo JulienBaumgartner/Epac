@@ -38,9 +38,10 @@ void drawLine()
 
 	Mesh cube;
 
-	cube.ExtractObj("torus.obj");
-
-
+	cube.ExtractObj("cube.obj");
+	cube.colors_ = { {0,0,255,255}, {255,0,0,255}, 
+	{255,255,0,255}, {0,255,255,255}, {64,64,64,255}, 
+	{0,255,0,255}, {255,255,255,255}, {255,0,255,255}};
 
 	window.addMesh(cube);
 
