@@ -16,7 +16,7 @@ Mesh::~Mesh()
 
 
 std::vector<algebra::Vec3<float>> Mesh::project(const std::vector<algebra::Vec3<float>>& points, int w, int h, const algebra::Matrix4<float>& m_view) const{
-	algebra::Matrix4<float> projection = algebra::Matrix4<float>::projectionMatrix(w, h, 0.1, 10000, 120 *M_PI /180);
+	algebra::Matrix4<float> projection = algebra::Matrix4<float>::projectionMatrix(w, h, 0.1, 100000, 90 *M_PI /180);
 	std::vector<algebra::Vec3<float>> projectedPoints;
 
 	for (int i = 0; i < points.size(); i++) {
@@ -26,7 +26,8 @@ std::vector<algebra::Vec3<float>> Mesh::project(const std::vector<algebra::Vec3<
 		v4 = v4 * projection;
 
 		algebra::Vec3<float> v3(points[i]);
-		if (v4.w_ != 0) {
+		if (v4.w_ != 0) 
+		{
 		 v3.x_ = v4.x_ / v4.w_;
 		 v3.y_ = v4.y_ / v4.w_;
 		 v3.z_ = v4.z_ / v4.w_;
@@ -58,17 +59,18 @@ bool Mesh::ExtractObj(const std::string & path)
 				str.erase(0, pos + delimiter.length());
 			}
 			splitStr.push_back(str);
+
+			algebra::Vec4<float> p;
 			switch (splitStr[0][0])
 			{
 			case 'v':
 
 				points_.push_back(algebra::Vec3<float>(std::stof(splitStr[1]),
 					std::stof(splitStr[2]), std::stof(splitStr[3]))); 
-				Pixel p;
-				p.a = 255;
-				p.r = rand() % 256;
-				p.g = rand() % 256;
-				p.b = rand() % 256;
+				p.w_ = 1;
+				p.x_ = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+				p.y_ = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+				p.z_ = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 				colors_.push_back(p);
 
 				break;

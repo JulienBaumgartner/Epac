@@ -31,17 +31,12 @@ void drawLine()
 	cam.target = v_target;
 	cam.up = v_up;
 
-	auto a = cam.View() * cam.ViewInv();
-
-	Image image(width, height);
+	Image image(width, height, cam);
 	Window window(image, cam, std::make_shared<EventsManagerExample>());
 
 	Mesh cube;
 
-	cube.ExtractObj("cube.obj");
-	cube.colors_ = { {0,0,255,255}, {255,0,0,255}, 
-	{255,255,0,255}, {0,255,255,255}, {64,64,64,255}, 
-	{0,255,0,255}, {255,255,255,255}, {255,0,255,255}};
+	cube.ExtractObj("torus.obj");
 
 	window.addMesh(cube);
 

@@ -14,7 +14,7 @@ public:
 
 	std::vector<algebra::Vec3<float>> points_;
 	std::vector<int> indices_;
-	std::vector<Pixel> colors_;
+	std::vector<algebra::Vec4<float>> colors_;
 
 };
 

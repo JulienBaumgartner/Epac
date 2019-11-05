@@ -16,7 +16,6 @@ bool EventsManagerExample::manage_events(Image& image, SDL_Event event, Camera& 
 			forward = (camera.position - camera.target).normalize() * 0.1f;
 			camera.position = camera.position - forward;
 			camera.target = camera.target - forward;
-			//camera.target = (camera.position - camera.target).normalize()*0.01f;
 			break;
 		case SDLK_s:
 			forward = (camera.position - camera.target).normalize() * 0.1f;
@@ -39,10 +38,18 @@ bool EventsManagerExample::manage_events(Image& image, SDL_Event event, Camera& 
 			camera.position.z_ -= 0.1f;
 			//camera.target.z_ -= 0.1f;
 			break;
+		case SDLK_m:
+			if (SDL_GetRelativeMouseMode() == SDL_TRUE) 
+			{
+				SDL_SetRelativeMouseMode(SDL_FALSE);
+			}
+			else
+			{
+				SDL_SetRelativeMouseMode(SDL_TRUE);
+			}
+			break;
 		}
 
-		printf("camera: {%f, %f, %f}\n", camera.position.x_, camera.position.y_, camera.position.z_);
-		printf("look at: {%f, %f, %f}\n", camera.target.x_ - camera.position.x_, camera.target.y_ - camera.position.y_, camera.target.z_ - camera.position.z_);
 		draw = !draw;
 		break;
 	case SDL_MOUSEMOTION:
@@ -50,7 +57,17 @@ bool EventsManagerExample::manage_events(Image& image, SDL_Event event, Camera& 
 		{
 			x2 = event.motion.x;
 			y2 = event.motion.y;
-			image.drawLine(lineColor1, lineColor2, x1, y1, x2, y2);
+			//image.drawLine(lineColor1, lineColor2, x1, y1, x2, y2);
+		}
+		if (SDL_GetRelativeMouseMode() == SDL_TRUE)
+		{
+			printf("look at: {%f, %f, %f}\n", camera.target.x_ - camera.position.x_,
+				camera.target.y_ - camera.position.y_, camera.target.z_ - camera.position.z_);
+
+			v_look_dir = (camera.target - camera.position)
+				* algebra::Matrix3<float>::rotateMatrixY(-event.motion.xrel*0.1f)
+				* algebra::Matrix3<float>::rotateMatrixX(-event.motion.yrel*0.1f);
+			camera.target = camera.position + v_look_dir;
 		}
 		break;
 	case SDL_QUIT:
@@ -72,7 +89,7 @@ bool EventsManagerExample::manage_events(Image& image, SDL_Event event, Camera& 
 		}
 
 		if (x1 != -1 && x2 != -1) {
-			image.drawLine(lineColor1, lineColor2, x1, y1, x2, y2);
+			//image.drawLine(lineColor1, lineColor2, x1, y1, x2, y2);
 		}
 		break;
 	}

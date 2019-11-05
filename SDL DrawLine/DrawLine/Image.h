@@ -8,19 +8,25 @@
 class Image
 {
 public:
-	Image(int width, int height);
+	Image(int width, int height, Camera& camera);
 	~Image();
 
 	int image_width;
 	int image_height;
-	std::vector<Pixel> current_image;
+	std::vector<algebra::Vec4<float>> current_image;
+	std::vector<float> z_buffer;
 
-	void drawPoint(Pixel color, int x, int y);
-	void drawLine(Pixel color1, Pixel color2, int x1, int y1, int x2, int y2);
-	void drawTriangle(Camera& camera, Pixel color1, const algebra::Vec3<float>& vec1, Pixel color2, const algebra::Vec3<float>& vec2, Pixel color3, const algebra::Vec3<float>& vec3);
-	void drawMesh(const Mesh& mesh, const algebra::Matrix4<float>& m_view, Camera& camera);
-	void fillTriangle(Vertex a, Vertex b, Vertex c);
+	void drawPoint(algebra::Vec4<float> color, int x, int y, float z);
+	void drawLine(algebra::Vec4<float> color1, algebra::Vec4<float> color2, int x1, int y1, float z1, int x2, int y2, float z2);
+	void drawTriangle(Camera& camera, algebra::Vec4<float> color1, const algebra::Vec3<float>& vec1, algebra::Vec4<float> color2,
+		const algebra::Vec3<float>& vec2, algebra::Vec4<float> color3, const algebra::Vec3<float>& vec3);
+	void drawMesh(const Mesh& mesh, const algebra::Matrix4<float>& m_view, Camera& camera, float rotation);
+	void fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1, algebra::Vec3<float> pos2, algebra::Vec3<float> pos3);
 protected:
-	bool isVisible(Camera& camera, const algebra::Vec3<float>& vec1, const algebra::Vec3<float>& vec2, const algebra::Vec3<float>& vec3, const algebra::Vec3<float>& pos);
+	bool isVisible(Camera& camera, const algebra::Vec3<float>& vec1, const algebra::Vec3<float>& vec2,
+		const algebra::Vec3<float>& vec3, const algebra::Vec3<float>& pos);
+	bool isOutOfScreen(const algebra::Vec3<float>& vec1, const algebra::Vec3<float>& vec2, const algebra::Vec3<float>& vec3);
+	Camera camera_;
+
 };
 

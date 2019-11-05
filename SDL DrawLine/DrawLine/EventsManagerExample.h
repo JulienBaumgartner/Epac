@@ -11,8 +11,10 @@ private:
 	int x2 = -1;
 	int y1 = -1;
 	int y2 = -1;
-	Pixel lineColor1 = { 0, 100, 100, 255 };
-	Pixel lineColor2 = { 100, 0, 0, 255 };
+	algebra::Vec4<float> lineColor1;
+	algebra::Vec4<float> lineColor2;
 	bool draw = false;
+	int pos_x = 0;
+	int pos_y = 0;
 };
 

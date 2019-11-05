@@ -282,6 +282,7 @@ namespace algebra
 			return n;
 		}
 
+
 		friend std::ostream& operator<<(std::ostream& out, const Vec3<T>& v)
 		{
 			out << "{" << v.x_ << ", " << v.y_ << ", " << v.z_ << "}\n";
@@ -298,6 +299,7 @@ namespace algebra
 	class Vec4
 	{
 	public:
+		Vec4() : x_(0), y_(0), z_(0), w_(255) {}
 		Vec4(T x, T y, T z, T w) : x_(x), y_(y), z_(z), w_(w) {}
 		Vec4(const Vec3<T>& v) : x_(v.x_), y_(v.y_), z_(v.z_), w_(1) {}
 		bool operator==(const Vec4<T>& vec) const

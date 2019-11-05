@@ -26,7 +26,7 @@ void Window::render()
 {
 	glTexImage2D(GL_TEXTURE_2D,
 		0, GL_RGBA, screen_width_, screen_height_,
-		0, GL_RGBA, GL_UNSIGNED_BYTE, &image_.current_image[0]);
+		0, GL_RGBA, GL_FLOAT, &image_.current_image[0]);
 
 	glClear(GL_COLOR_BUFFER_BIT);
 	glEnable(GL_TEXTURE_2D);
@@ -53,20 +53,18 @@ void Window::render()
 	SDL_GL_SwapWindow(window_);
 }
 
+static float t = 0;
 void Window::run()
 {
 	SDL_Event event;
 	bool loop = true;
 	while (loop)
 	{
-		std::fill(image_.current_image.begin(), image_.current_image.end(), Pixel{ 40,0,40,255 });
+		t += 3;
+		std::fill(image_.current_image.begin(), image_.current_image.end(), algebra::Vec4<float>(0.2f,0,0.2f,1));
+		std::fill(image_.z_buffer.begin(), image_.z_buffer.end(), -10000);
 
 		algebra::Matrix4<float> m_view = camera_.View().inv();
-		//algebra::Matrix4<float> m_view = algebra::Matrix4<float>
-		//	(1,0,0,0,
-		//	0,1,0,0,
-		//	0,0,1,0,
-		//	0,0,0,1);
 
 		while (SDL_PollEvent(&event))
 		{
@@ -75,7 +73,7 @@ void Window::run()
 
 		for (Mesh m : meshes_) 
 		{
-			image_.drawMesh(m, m_view, camera_);
+			image_.drawMesh(m, m_view, camera_, t);
 		}
 		render();
 	}
@@ -100,6 +98,7 @@ void Window::init()
 		GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D,
 		GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
 }
 
 

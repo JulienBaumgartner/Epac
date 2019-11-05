@@ -4,5 +4,5 @@
 
 struct Vertex {
 	algebra::Vec3<float> screen_position;
-	Pixel color;
+	algebra::Vec4<float> color;
 };
