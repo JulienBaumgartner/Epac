@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include "Mesh.h"
-#include "Pixel.h"
 #include "Camera.h"
 #include "Vertex.h"
 
@@ -11,10 +10,10 @@ public:
 	Image(int width, int height, Camera& camera);
 	~Image();
 
-	int image_width;
-	int image_height;
-	std::vector<algebra::Vec4<float>> current_image;
-	std::vector<float> z_buffer;
+	int imageWidth;
+	int imageHeight;
+	std::vector<algebra::Vec4<float>> currentImage;
+	std::vector<float> zBuffer;
 
 	void drawPoint(algebra::Vec4<float> color, int x, int y, float z);
 	void drawLine(algebra::Vec4<float> color1, algebra::Vec4<float> color2, int x1, int y1, float z1, int x2, int y2, float z2);
@@ -26,7 +25,7 @@ protected:
 	bool isVisible(Camera& camera, const algebra::Vec3<float>& vec1, const algebra::Vec3<float>& vec2,
 		const algebra::Vec3<float>& vec3, const algebra::Vec3<float>& pos);
 	bool isOutOfScreen(const algebra::Vec3<float>& vec1, const algebra::Vec3<float>& vec2, const algebra::Vec3<float>& vec3);
-	Camera camera_;
+	Camera camera;
 
 };
 

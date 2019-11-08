@@ -10,14 +10,14 @@ namespace algebra
 	class Vec2
 	{
 	public:
-		Vec2(T x, T y) : x_(x), y_(y) {}
+		Vec2(T x, T y) : x(x), y(y) {}
 		bool operator==(const Vec2<T>& vec) const
 		{
-			return (x_ == vec.x_ && y_ == vec.y_);
+			return (x == vec.x && y == vec.y);
 		}
 		bool operator!=(const Vec2<T>& vec) const
 		{
-			return (x_ != vec.x_ || y_ != vec.y_);
+			return (x != vec.x || y != vec.y);
 		}
 		bool operator>(const Vec2<T>& vec) const
 		{
@@ -37,75 +37,75 @@ namespace algebra
 		}
 		Vec2<T> operator=(const Vec2<T>& vec)
 		{
-			x_ = vec.x_;
-			y_ = vec.y_;
+			x = vec.x;
+			y = vec.y;
 			return *this;
 		}
 		Vec2<T> operator+(T s) const
 		{
-			Vec2<T> vec(x_, y_);
+			Vec2<T> vec(x, y);
 			vec += s;
 			return vec;
 		}
 		Vec2<T> operator-(T s) const
 		{
-			Vec2<T> vec(x_, y_);
+			Vec2<T> vec(x, y);
 			vec -= s;
 			return vec;
 		}
 		Vec2<T> operator*(T s) const
 		{
-			Vec2<T> vec(x_, y_);
+			Vec2<T> vec(x, y);
 			vec *= s;
 			return vec;
 		}
 		Vec2<T> operator/(T s) const
 		{
-			Vec2<T> vec(x_, y_);
+			Vec2<T> vec(x, y);
 			vec /= s;
 			return vec;
 		}
 		Vec2<T> operator+=(T s)
 		{
-			x_ += s;
-			y_ += s;
+			x += s;
+			y += s;
 			return *this;
 		}
 		Vec2<T> operator-=(T s)
 		{
-			x_ -= s;
-			y_ -= s;
+			x -= s;
+			y -= s;
 			return *this;
 		}
 		Vec2<T> operator*=(T s)
 		{
-			x_ *= s;
-			y_ *= s;
+			x *= s;
+			y *= s;
 			return *this;
 		}
 		Vec2<T> operator/=(T s)
 		{
-			x_ /= s;
-			y_ /= s;
+			x /= s;
+			y /= s;
 			return *this;
 		}
 		Vec2<T> operator+(const Vec2<T>& vec) const
 		{
-			Vec2<T> v(x_, y_);
-			v.x_ += vec.x_;
-			v.y_ += vec.y_;
+			Vec2<T> v(x, y);
+			v.x += vec.x;
+			v.y += vec.y;
 			return v;
 		}
 		Vec2<T> operator-(const Vec2<T>& vec) const
 		{
-			Vec2<T> v(x_, y_);
-			v.x_ -= vec.x_;
-			v.y_ -= vec.y_;
+			Vec2<T> v(x, y);
+			v.x -= vec.x;
+			v.y -= vec.y;
 			return v;
 		}
 		T operator*(const Vec2<T>& vec) const
 		{
-			return x_ * vec.x_ + y_ * vec.y_;
+			return x * vec.x + y * vec.y;
 		}
 
 
@@ -116,44 +116,44 @@ namespace algebra
 
 		T double_length() const
 		{
-			return x_ * x_ + y_ * y_;
+			return x * x + y * y;
 		}
 
 		Vec2<T> normalize() const
 		{
-			Vec2<T> n(x_, y_);
+			Vec2<T> n(x, y);
 			const T len = length();
-			n.x_ /= len;
-			n.y_ /= len;
+			n.x /= len;
+			n.y /= len;
 			return n;
 		}
 
 		friend std::ostream& operator<<(std::ostream& out, const Vec2<T>& v)
 		{
-			out << "{" << v.x_ << ", " << v.y_ << "}\n";
+			out << "{" << v.x << ", " << v.y << "}\n";
 			return out;
 		}
-		T x_;
-		T y_;
+		T x;
+		T y;
 	};
 
 	template <typename T>
 	class Vec3
 	{
 	public:
-		Vec3() : x_(0), y_(0), z_(0) {}
-		Vec3(T x, T y, T z) : x_(x), y_(y), z_(z) {}
-		Vec3(const Vec3<T>& v) : x_(v.x_), y_(v.y_), z_(v.z_) {}
+		Vec3() : x(0), y(0), z(0) {}
+		Vec3(T x, T y, T z) : x(x), y(y), z(z) {}
+		Vec3(const Vec3<T>& v) : x(v.x), y(v.y), z(v.z) {}
 
 		bool operator==(const Vec3<T>& vec) const
 		{
-			return (x_ == vec.x_ && y_ == vec.y_ &&
-				z_ == vec.z_);
+			return (x == vec.x && y == vec.y &&
+				z == vec.z);
 		}
 		bool operator!=(const Vec3<T>& vec) const
 		{
-			return (x_ != vec.x_ || y_ != vec.y_ ||
-				z_ != vec.z_);
+			return (x != vec.x || y != vec.y ||
+				z != vec.z);
 		}
 		bool operator>(const Vec3<T>& vec) const
 		{
@@ -174,91 +174,91 @@ namespace algebra
 
 		Vec3<T> operator=(const Vec3<T>& vec)
 		{
-			x_ = vec.x_;
-			y_ = vec.y_;
-			z_ = vec.z_;
+			x = vec.x;
+			y = vec.y;
+			z = vec.z;
 			return *this;
 		}
 		Vec3<T> operator+(T s) const
 		{
-			Vec3<T> vec(x_, y_, z_);
+			Vec3<T> vec(x, y, z);
 			vec += s;
 			return vec;
 		}
 
 		Vec3<T> operator-(T s) const
 		{
-			Vec3<T> vec(x_, y_, z_);
+			Vec3<T> vec(x, y, z);
 			vec -= s;
 			return vec;
 		}
 
 		Vec3<T> operator*(T s) const
 		{
-			Vec3<T> vec(x_, y_, z_);
+			Vec3<T> vec(x, y, z);
 			vec *= s;
 			return vec;
 		}
 		Vec3<T> operator/(T s) const
 		{
-			Vec3<T> vec(x_, y_, z_);
+			Vec3<T> vec(x, y, z);
 			vec /= s;
 			return vec;
 		}
 		Vec3<T> operator+=(T s)
 		{
-			x_ += s;
-			y_ += s;
-			z_ += s;
+			x += s;
+			y += s;
+			z += s;
 			return *this;
 		}
 		Vec3<T> operator-=(T s)
 		{
-			x_ -= s;
-			y_ -= s;
-			z_ -= s;
+			x -= s;
+			y -= s;
+			z -= s;
 			return *this;
 		}
 		Vec3<T> operator*=(T s)
 		{
-			x_ *= s;
-			y_ *= s;
-			z_ *= s;
+			x *= s;
+			y *= s;
+			z *= s;
 			return *this;
 		}
 		Vec3<T> operator/=(T s)
 		{
-			x_ /= s;
-			y_ /= s;
-			z_ /= s;
+			x /= s;
+			y /= s;
+			z /= s;
 			return *this;
 		}
 		Vec3<T> operator+(const Vec3<T>& vec) const
 		{
-			Vec3<T> v(x_, y_, z_);
-			v.x_ += vec.x_;
-			v.y_ += vec.y_;
-			v.z_ += vec.z_;
+			Vec3<T> v(x, y, z);
+			v.x += vec.x;
+			v.y += vec.y;
+			v.z += vec.z;
 			return v;
 		}
 		Vec3<T> operator-(const Vec3<T>& vec) const
 		{
-			Vec3<T> v(x_, y_, z_);
-			v.x_ -= vec.x_;
-			v.y_ -= vec.y_;
-			v.z_ -= vec.z_;
+			Vec3<T> v(x, y, z);
+			v.x -= vec.x;
+			v.y -= vec.y;
+			v.z -= vec.z;
 			return v;
 		}
 		T operator*(const Vec3<T>& vec) const
 		{
-			return x_ * vec.x_ + y_ * vec.y_ + z_ * vec.z_;
+			return x * vec.x + y * vec.y + z * vec.z;
 		}
 		Vec3<T> operator^(const Vec3<T>& vec) const
 		{
 			return Vec3<T>(
-				y_ * vec.z_ - z_ * vec.y_,
-				z_ * vec.x_ - x_ * vec.z_,
-				x_ * vec.y_ - y_ * vec.x_);
+				y * vec.z - z * vec.y,
+				z * vec.x - x * vec.z,
+				x * vec.y - y * vec.x);
 		}
 
 
@@ -269,29 +269,29 @@ namespace algebra
 
 		T double_length() const
 		{
-			return x_ * x_ + y_ * y_ + z_ * z_;
+			return x * x + y * y + z * z;
 		}
 
 		Vec3<T> normalize() const
 		{
-			Vec3<T> n(x_, y_, z_);
+			Vec3<T> n(x, y, z);
 			const T len = length();
-			n.x_ /= len;
-			n.y_ /= len;
-			n.z_ /= len;
+			n.x /= len;
+			n.y /= len;
+			n.z /= len;
 			return n;
 		}
 
 
 		friend std::ostream& operator<<(std::ostream& out, const Vec3<T>& v)
 		{
-			out << "{" << v.x_ << ", " << v.y_ << ", " << v.z_ << "}\n";
+			out << "{" << v.x << ", " << v.y << ", " << v.z << "}\n";
 			return out;
 		}
 
-		T x_;
-		T y_;
-		T z_;
+		T x;
+		T y;
+		T z;
 	};
 
 
@@ -299,18 +299,18 @@ namespace algebra
 	class Vec4
 	{
 	public:
-		Vec4() : x_(0), y_(0), z_(0), w_(255) {}
-		Vec4(T x, T y, T z, T w) : x_(x), y_(y), z_(z), w_(w) {}
-		Vec4(const Vec3<T>& v) : x_(v.x_), y_(v.y_), z_(v.z_), w_(1) {}
+		Vec4() : x(0), y(0), z(0), w(255) {}
+		Vec4(T x, T y, T z, T w) : x(x), y(y), z(z), w(w) {}
+		Vec4(const Vec3<T>& v) : x(v.x), y(v.y), z(v.z), w(1) {}
 		bool operator==(const Vec4<T>& vec) const
 		{
-			return (x_ == vec.x_ && y_ == vec.y_ &&
-				z_ == vec.z_ && w_ == vec.w_);
+			return (x == vec.x && y == vec.y &&
+				z == vec.z && w == vec.w);
 		}
 		bool operator!=(const Vec4<T>& vec) const
 		{
-			return (x_ != vec.x_ || y_ != vec.y_ ||
-				z_ != vec.z_ || w_ != vec.w_);
+			return (x != vec.x || y != vec.y ||
+				z != vec.z || w != vec.w);
 		}
 		bool operator>(const Vec4<T>& vec) const 
 		{ 
@@ -330,89 +330,89 @@ namespace algebra
 		}
 		Vec4<T> operator=(const Vec4<T>& vec)
 		{
-			x_ = vec.x_;
-			y_ = vec.y_;
-			z_ = vec.z_;
-			w_ = vec.w_;
+			x = vec.x;
+			y = vec.y;
+			z = vec.z;
+			w = vec.w;
 			return *this;
 		}
 		Vec4<T> operator+(T s) const
 		{
-			Vec4<T> vec(x_, y_, z_, w_);
+			Vec4<T> vec(x, y, z, w);
 			vec += s;
 			return vec;
 		}
 		Vec4<T> operator-(T s) const
 		{
-			Vec4<T> vec(x_, y_, z_, w_);
+			Vec4<T> vec(x, y, z, w);
 			vec -= s;
 			return vec;
 		}
 		Vec4<T> operator*(T s) const
 		{
-			Vec4<T> vec(x_, y_, z_, w_);
+			Vec4<T> vec(x, y, z, w);
 			vec *= s;
 			return vec;
 		}
 		Vec4<T> operator/(T s) const
 		{
-			Vec4<T> vec(x_, y_, z_, w_);
+			Vec4<T> vec(x, y, z, w);
 			vec /= s;
 			return vec;
 		}
 		Vec4<T> operator+=(T s)
 		{
-			x_ += s;
-			y_ += s;
-			z_ += s;
-			w_ += s;
+			x += s;
+			y += s;
+			z += s;
+			w += s;
 			return *this;
 		}
 		Vec4<T> operator-=(T s)
 		{
-			x_ -= s;
-			y_ -= s;
-			z_ -= s;
-			w_ -= s;
+			x -= s;
+			y -= s;
+			z -= s;
+			w -= s;
 			return *this;
 		}
 		Vec4<T> operator*=(T s)
 		{
-			x_ *= s;
-			y_ *= s;
-			z_ *= s;
-			w_ *= s;
+			x *= s;
+			y *= s;
+			z *= s;
+			w *= s;
 			return *this;
 		}
 		Vec4<T> operator/=(T s)
 		{
-			x_ /= s;
-			y_ /= s;
-			z_ /= s;
-			w_ /= s;
+			x /= s;
+			y /= s;
+			z /= s;
+			w /= s;
 			return *this;
 		}
 		Vec4<T> operator+(const Vec4<T>& vec) const
 		{
-			Vec4<T> v(x_, y_, z_, w_);
-			v.x_ += vec.x_;
-			v.y_ += vec.y_;
-			v.z_ += vec.z_;
-			v.w_ += vec.w_;
+			Vec4<T> v(x, y, z, w);
+			v.x += vec.x;
+			v.y += vec.y;
+			v.z += vec.z;
+			v.w += vec.w;
 			return v;
 		}
 		Vec4<T> operator-(const Vec4<T>& vec) const
 		{
-			Vec4<T> v(x_, y_, z_, w_);
-			v.x_ -= vec.x_;
-			v.y_ -= vec.y_;
-			v.z_ -= vec.z_;
-			v.w_ -= vec.w_;
+			Vec4<T> v(x, y, z, w);
+			v.x -= vec.x;
+			v.y -= vec.y;
+			v.z -= vec.z;
+			v.w -= vec.w;
 			return v;
 		}
 		T operator*(const Vec4<T>& vec) const
 		{
-			return x_ * vec.x_ + y_ * vec.y_ + z_ * vec.z_ + w_ * vec.w_;
+			return x * vec.x + y * vec.y + z * vec.z + w * vec.w;
 		}
 
 		T length() const 
@@ -422,31 +422,31 @@ namespace algebra
 
 		T double_length() const
 		{
-			return x_ * x_ + y_ * y_ + z_ * z_ + w_ * w_;
+			return x * x + y * y + z * z + w * w;
 		}
 
 		Vec4<T> normalize() const
 		{
-			Vec4<T> n(x_, y_, z_, w_);
+			Vec4<T> n(x, y, z, w);
 			const T len = length();
-			n.x_ /= len;
-			n.y_ /= len;
-			n.z_ /= len;
-			n.w_ /= len;
+			n.x /= len;
+			n.y /= len;
+			n.z /= len;
+			n.w /= len;
 			return n;
 		}
 
 
 		friend std::ostream& operator<<(std::ostream& out, const Vec4<T>& v)
 		{
-			out << "{" << v.x_ << ", " << v.y_ << ", " << v.z_ << ", " << v.w_ << "}\n";
+			out << "{" << v.x << ", " << v.y << ", " << v.z << ", " << v.w << "}\n";
 			return out;
 		}
 
-		T x_;
-		T y_;
-		T z_;
-		T w_;
+		T x;
+		T y;
+		T z;
+		T w;
 	};
 
 	
@@ -455,80 +455,80 @@ namespace algebra
 	class Matrix2
 	{
 	public:
-		Matrix2(T m11, T m12, T m21, T m22) : m11_(m11), m12_(m12), m21_(m21), m22_(m22){}
+		Matrix2(T m11, T m12, T m21, T m22) : m11(m11), m12(m12), m21(m21), m22(m22){}
 		Matrix2(const Matrix2<T>& mat) 
 		{
-			m11_ = mat.m11_;
-			m12_ = mat.m12_;
-			m21_ = mat.m21_;
-			m22_ = mat.m22_;
+			m11 = mat.m11;
+			m12 = mat.m12;
+			m21 = mat.m21;
+			m22 = mat.m22;
 		}
 
 		Matrix2<T> operator+(const Matrix2<T>& mat)
 		{
 			Matrix2<T> newMat(*this);
-			newMat.m11_ += mat.m11_;
-			newMat.m12_ += mat.m12_;
-			newMat.m21_ += mat.m21_;
-			newMat.m22_ += mat.m22_;
+			newMat.m11 += mat.m11;
+			newMat.m12 += mat.m12;
+			newMat.m21 += mat.m21;
+			newMat.m22 += mat.m22;
 			return newMat;
 		}
 		Matrix2<T> operator-(const Matrix2<T>& mat)
 		{
 			Matrix2<T> newMat(*this);
-			newMat.m11_ -= mat.m11_;
-			newMat.m12_ -= mat.m12_;
-			newMat.m21_ -= mat.m21_;
-			newMat.m22_ -= mat.m22_;
+			newMat.m11 -= mat.m11;
+			newMat.m12 -= mat.m12;
+			newMat.m21 -= mat.m21;
+			newMat.m22 -= mat.m22;
 			return newMat;
 		}
 		Matrix2<T> operator*(T s)
 		{
 			Matrix2<T> newMat(*this);
-			newMat.m11_ *= s;
-			newMat.m12_ *= s;
-			newMat.m21_ *= s;
-			newMat.m22_ *= s;
+			newMat.m11 *= s;
+			newMat.m12 *= s;
+			newMat.m21 *= s;
+			newMat.m22 *= s;
 			return newMat;
 		}
 		Matrix2<T> operator/(T s)
 		{
 			Matrix2<T> newMat(*this);
-			newMat.m11_ /= s;
-			newMat.m12_ /= s;
-			newMat.m21_ /= s;
-			newMat.m22_ /= s;
+			newMat.m11 /= s;
+			newMat.m12 /= s;
+			newMat.m21 /= s;
+			newMat.m22 /= s;
 			return newMat;
 		}
 		Matrix2<T> transpose() const
 		{
 			Matrix2<T> mat(*this);
-			mat.m12_ = m21_;
-			mat.m21_ = m12_;
+			mat.m12 = m21;
+			mat.m21 = m12;
 			return mat;
 		}
 		Matrix2<T> operator*(const Matrix2<T>& m) const 
 		{
 			Matrix2<T> newMat(*this);
-			newMat.m11_ = Vec2<T>(m11_, m12_)*Vec2<T>(m.m11_, m.m21_);
-			newMat.m12_ = Vec2<T>(m11_, m12_)*Vec2<T>(m.m12_, m.m22_);
-			newMat.m21_ = Vec2<T>(m21_, m22_)*Vec2<T>(m.m11_, m.m21_);
-			newMat.m22_ = Vec2<T>(m21_, m22_)*Vec2<T>(m.m12_, m.m22_);
+			newMat.m11 = Vec2<T>(m11, m12)*Vec2<T>(m.m11, m.m21);
+			newMat.m12 = Vec2<T>(m11, m12)*Vec2<T>(m.m12, m.m22);
+			newMat.m21 = Vec2<T>(m21, m22)*Vec2<T>(m.m11, m.m21);
+			newMat.m22 = Vec2<T>(m21, m22)*Vec2<T>(m.m12, m.m22);
 
 			return newMat;
 		}
 		T det() const
 		{
-			return m11_ * m22_ - m12_ * m21_;
+			return m11 * m22 - m12 * m21;
 		}
 
 		Matrix2<T> minor() const
 		{
 			Matrix2<T> mat(*this);
-			mat.m11_ = m22_;
-			mat.m12_ = m21_;
-			mat.m21_ = m12_;
-			mat.m22_ = m11_;
+			mat.m11 = m22;
+			mat.m12 = m21;
+			mat.m21 = m12;
+			mat.m22 = m11;
 
 			return mat;
 		}
@@ -536,8 +536,8 @@ namespace algebra
 		Matrix2<T> cofactor() const
 		{
 			Matrix2<T> mat = minor();
-			return Matrix2<T>(mat.m11_, -mat.m12_,
-						      -mat.m21_, mat.m22_);
+			return Matrix2<T>(mat.m11, -mat.m12,
+						      -mat.m21, mat.m22);
 		}
 
 		Matrix2<T> adj() const
@@ -553,15 +553,15 @@ namespace algebra
 
 		friend std::ostream& operator<<(std::ostream& out, const Matrix2<T>& m)
 		{
-			out << "[" << m.m11_ << ", " << m.m12_ << "\n";
-			out << m.m21_ << ", " << m.m22_ << "]\n";
+			out << "[" << m.m11 << ", " << m.m12 << "\n";
+			out << m.m21 << ", " << m.m22 << "]\n";
 			return out;
 		}
 
-		T m11_;
-		T m12_;
-		T m21_;
-		T m22_;
+		T m11;
+		T m12;
+		T m21;
+		T m22;
 	};
 
 
@@ -572,137 +572,137 @@ namespace algebra
 		Matrix3(T m11, T m12, T m13,
 			T m21, T m22, T m23,
 			T m31, T m32, T m33) :
-			m11_(m11), m12_(m12), m13_(m13),
-			m21_(m21), m22_(m22), m23_(m23),
-			m31_(m31), m32_(m32), m33_(m33) {}
+			m11(m11), m12(m12), m13(m13),
+			m21(m21), m22(m22), m23(m23),
+			m31(m31), m32(m32), m33(m33) {}
 
 		Matrix3(const Matrix3<T>& mat)
 		{
-			m11_ = mat.m11_;
-			m12_ = mat.m12_;
-			m13_ = mat.m13_;
-			m21_ = mat.m21_;
-			m22_ = mat.m22_;
-			m23_ = mat.m23_;
-			m31_ = mat.m31_;
-			m32_ = mat.m32_;
-			m33_ = mat.m33_;
+			m11 = mat.m11;
+			m12 = mat.m12;
+			m13 = mat.m13;
+			m21 = mat.m21;
+			m22 = mat.m22;
+			m23 = mat.m23;
+			m31 = mat.m31;
+			m32 = mat.m32;
+			m33 = mat.m33;
 		}
 
 		Matrix3<T> operator+(const Matrix3<T>& mat)
 		{
 			Matrix3<T> newMat(*this);
-			newMat.m11_ += mat.m11_;
-			newMat.m12_ += mat.m12_;
-			newMat.m13_ += mat.m13_;
-			newMat.m21_ += mat.m21_;
-			newMat.m22_ += mat.m22_;
-			newMat.m23_ += mat.m23_;
-			newMat.m31_ += mat.m31_;
-			newMat.m32_ += mat.m32_;
-			newMat.m33_ += mat.m33_;
+			newMat.m11 += mat.m11;
+			newMat.m12 += mat.m12;
+			newMat.m13 += mat.m13;
+			newMat.m21 += mat.m21;
+			newMat.m22 += mat.m22;
+			newMat.m23 += mat.m23;
+			newMat.m31 += mat.m31;
+			newMat.m32 += mat.m32;
+			newMat.m33 += mat.m33;
 			return newMat;
 		}
 		Matrix3<T> operator-(const Matrix3<T>& mat)
 		{
 			Matrix3<T> newMat(*this);
-			newMat.m11_ -= mat.m11_;
-			newMat.m12_ -= mat.m12_;
-			newMat.m13_ -= mat.m13_;
-			newMat.m21_ -= mat.m21_;
-			newMat.m22_ -= mat.m22_;
-			newMat.m23_ -= mat.m23_;
-			newMat.m31_ -= mat.m31_;
-			newMat.m32_ -= mat.m32_;
-			newMat.m33_ -= mat.m33_;
+			newMat.m11 -= mat.m11;
+			newMat.m12 -= mat.m12;
+			newMat.m13 -= mat.m13;
+			newMat.m21 -= mat.m21;
+			newMat.m22 -= mat.m22;
+			newMat.m23 -= mat.m23;
+			newMat.m31 -= mat.m31;
+			newMat.m32 -= mat.m32;
+			newMat.m33 -= mat.m33;
 			return newMat;
 		}
 
 		Matrix3<T> operator*(T s)
 		{
 			Matrix3<T> newMat(*this);
-			newMat.m11_ *= s;
-			newMat.m12_ *= s;
-			newMat.m13_ *= s;
-			newMat.m21_ *= s;
-			newMat.m22_ *= s;
-			newMat.m23_ *= s;
-			newMat.m31_ *= s;
-			newMat.m32_ *= s;
-			newMat.m33_ *= s;
+			newMat.m11 *= s;
+			newMat.m12 *= s;
+			newMat.m13 *= s;
+			newMat.m21 *= s;
+			newMat.m22 *= s;
+			newMat.m23 *= s;
+			newMat.m31 *= s;
+			newMat.m32 *= s;
+			newMat.m33 *= s;
 			return newMat;
 		}
 
 		Matrix3<T> operator/(T s)
 		{
 			Matrix3<T> newMat(*this);
-			newMat.m11_ /= s;
-			newMat.m12_ /= s;
-			newMat.m13_ /= s;
-			newMat.m21_ /= s;
-			newMat.m22_ /= s;
-			newMat.m23_ /= s;
-			newMat.m31_ /= s;
-			newMat.m32_ /= s;
-			newMat.m33_ /= s;
+			newMat.m11 /= s;
+			newMat.m12 /= s;
+			newMat.m13 /= s;
+			newMat.m21 /= s;
+			newMat.m22 /= s;
+			newMat.m23 /= s;
+			newMat.m31 /= s;
+			newMat.m32 /= s;
+			newMat.m33 /= s;
 			return newMat;
 		}
 
 		Matrix3<T> transpose() const
 		{
 			Matrix3<T> mat(*this);
-			mat.m12_ = m21_;
-			mat.m13_ = m31_;
-			mat.m21_ = m12_;
-			mat.m23_ = m32_;
-			mat.m31_ = m13_;
-			mat.m32_ = m23_;
+			mat.m12 = m21;
+			mat.m13 = m31;
+			mat.m21 = m12;
+			mat.m23 = m32;
+			mat.m31 = m13;
+			mat.m32 = m23;
 			return mat;
 		}
 
 		Matrix3<T> operator*(const Matrix3<T>& m) const
 		{
 			Matrix3<T> newMat(*this);
-			newMat.m11_ = Vec3<T>(m11_, m12_, m13_)*Vec3<T>(m.m11_, m.m21_, m.m31_);
-			newMat.m12_ = Vec3<T>(m11_, m12_, m13_)*Vec3<T>(m.m12_, m.m22_, m.m32_);
-			newMat.m13_ = Vec3<T>(m11_, m12_, m13_)*Vec3<T>(m.m13_, m.m23_, m.m33_);
+			newMat.m11 = Vec3<T>(m11, m12, m13)*Vec3<T>(m.m11, m.m21, m.m31);
+			newMat.m12 = Vec3<T>(m11, m12, m13)*Vec3<T>(m.m12, m.m22, m.m32);
+			newMat.m13 = Vec3<T>(m11, m12, m13)*Vec3<T>(m.m13, m.m23, m.m33);
 
-			newMat.m21_ = Vec3<T>(m21_, m22_, m23_)*Vec3<T>(m.m11_, m.m21_, m.m31_);
-			newMat.m22_ = Vec3<T>(m21_, m22_, m23_)*Vec3<T>(m.m12_, m.m22_, m.m32_);
-			newMat.m23_ = Vec3<T>(m21_, m22_, m23_)*Vec3<T>(m.m13_, m.m23_, m.m33_);
+			newMat.m21 = Vec3<T>(m21, m22, m23)*Vec3<T>(m.m11, m.m21, m.m31);
+			newMat.m22 = Vec3<T>(m21, m22, m23)*Vec3<T>(m.m12, m.m22, m.m32);
+			newMat.m23 = Vec3<T>(m21, m22, m23)*Vec3<T>(m.m13, m.m23, m.m33);
 
-			newMat.m31_ = Vec3<T>(m31_, m32_, m33_)*Vec3<T>(m.m11_, m.m21_, m.m31_);
-			newMat.m32_ = Vec3<T>(m31_, m32_, m33_)*Vec3<T>(m.m12_, m.m22_, m.m32_);
-			newMat.m33_ = Vec3<T>(m31_, m32_, m33_)*Vec3<T>(m.m13_, m.m23_, m.m33_);
+			newMat.m31 = Vec3<T>(m31, m32, m33)*Vec3<T>(m.m11, m.m21, m.m31);
+			newMat.m32 = Vec3<T>(m31, m32, m33)*Vec3<T>(m.m12, m.m22, m.m32);
+			newMat.m33 = Vec3<T>(m31, m32, m33)*Vec3<T>(m.m13, m.m23, m.m33);
 
 			return newMat;
 		}
 
 		T det() const
 		{
-			Matrix2<T> mat1 (m22_, m23_, m32_, m33_);
-			Matrix2<T> mat2 (m21_, m23_, m31_, m33_);
-			Matrix2<T> mat3 (m21_, m22_, m31_, m32_);
+			Matrix2<T> mat1 (m22, m23, m32, m33);
+			Matrix2<T> mat2 (m21, m23, m31, m33);
+			Matrix2<T> mat3 (m21, m22, m31, m32);
 
-			return m11_ * mat1.det() -
-				   m12_ * mat2.det() +
-				   m13_ * mat3.det();
+			return m11 * mat1.det() -
+				   m12 * mat2.det() +
+				   m13 * mat3.det();
 		}
 
 		Matrix3<T> minor() const
 		{
 			Matrix3<T> mat(*this);
-			mat.m11_ = Matrix2<T>(m22_, m23_, m32_, m33_).det();
-			mat.m12_ = Matrix2<T>(m21_, m23_, m31_, m33_).det();
-			mat.m13_ = Matrix2<T>(m21_, m22_, m31_, m32_).det();
+			mat.m11 = Matrix2<T>(m22, m23, m32, m33).det();
+			mat.m12 = Matrix2<T>(m21, m23, m31, m33).det();
+			mat.m13 = Matrix2<T>(m21, m22, m31, m32).det();
 
-			mat.m21_ = Matrix2<T>(m12_, m13_, m32_, m33_).det();
-			mat.m22_ = Matrix2<T>(m11_, m13_, m31_, m33_).det();
-			mat.m23_ = Matrix2<T>(m11_, m12_, m31_, m32_).det();
+			mat.m21 = Matrix2<T>(m12, m13, m32, m33).det();
+			mat.m22 = Matrix2<T>(m11, m13, m31, m33).det();
+			mat.m23 = Matrix2<T>(m11, m12, m31, m32).det();
 
-			mat.m31_ = Matrix2<T>(m12_, m13_, m22_, m23_).det();
-			mat.m32_ = Matrix2<T>(m11_, m13_, m21_, m23_).det();
-			mat.m33_ = Matrix2<T>(m11_, m12_, m21_, m22_).det();
+			mat.m31 = Matrix2<T>(m12, m13, m22, m23).det();
+			mat.m32 = Matrix2<T>(m11, m13, m21, m23).det();
+			mat.m33 = Matrix2<T>(m11, m12, m21, m22).det();
 
 			return mat;
 		}
@@ -710,9 +710,9 @@ namespace algebra
 		Matrix3<T> cofactor() const
 		{
 			Matrix3<T> mat = minor();
-			return Matrix3<T>(mat.m11_, -mat.m12_, mat.m13_,
-							  -mat.m21_, mat.m22_, -mat.m23_,
-							  mat.m31_, -mat.m32_, mat.m33_);
+			return Matrix3<T>(mat.m11, -mat.m12, mat.m13,
+							  -mat.m21, mat.m22, -mat.m23,
+							  mat.m31, -mat.m32, mat.m33);
 		}
 
 		Matrix3<T> adj() const
@@ -728,9 +728,9 @@ namespace algebra
 
 		friend std::ostream& operator<<(std::ostream& out, const Matrix3<T>& m)
 		{
-			out << "[" << m.m11_ << ", " << m.m12_ << ", " << m.m13_ << "\n";
-			out << m.m21_ << ", " << m.m22_ << ", " << m.m23_ << "\n";
-			out << m.m31_ << ", " << m.m32_ << ", " << m.m33_ << "]\n";
+			out << "[" << m.m11 << ", " << m.m12 << ", " << m.m13 << "\n";
+			out << m.m21 << ", " << m.m22 << ", " << m.m23 << "\n";
+			out << m.m31 << ", " << m.m32 << ", " << m.m33 << "]\n";
 			return out;
 		}
 
@@ -755,15 +755,15 @@ namespace algebra
 				0, 0, 1);
 		}
 
-		T m11_;
-		T m12_;
-		T m13_;
-		T m21_;
-		T m22_;
-		T m23_;
-		T m31_;
-		T m32_;
-		T m33_;
+		T m11;
+		T m12;
+		T m13;
+		T m21;
+		T m22;
+		T m23;
+		T m31;
+		T m32;
+		T m33;
 
 	};
 
@@ -775,134 +775,134 @@ namespace algebra
 			T m21, T m22, T m23, T m24,
 			T m31, T m32, T m33, T m34,
 			T m41, T m42, T m43, T m44) :
-			m11_(m11), m12_(m12), m13_(m13), m14_(m14),
-			m21_(m21), m22_(m22), m23_(m23), m24_(m24),
-			m31_(m31), m32_(m32), m33_(m33), m34_(m34),
-			m41_(m41), m42_(m42), m43_(m43), m44_(m44) {}
+			m11(m11), m12(m12), m13(m13), m14(m14),
+			m21(m21), m22(m22), m23(m23), m24(m24),
+			m31(m31), m32(m32), m33(m33), m34(m34),
+			m41(m41), m42(m42), m43(m43), m44(m44) {}
 
 		Matrix4(const Matrix4<T>& mat)
 		{
-			m11_ = mat.m11_;
-			m12_ = mat.m12_;
-			m13_ = mat.m13_;
-			m14_ = mat.m14_;
-			m21_ = mat.m21_;
-			m22_ = mat.m22_;
-			m23_ = mat.m23_;
-			m24_ = mat.m24_;
-			m31_ = mat.m31_;
-			m32_ = mat.m32_;
-			m33_ = mat.m33_;
-			m34_ = mat.m34_;
-			m41_ = mat.m41_;
-			m42_ = mat.m42_;
-			m43_ = mat.m43_;
-			m44_ = mat.m44_;
+			m11 = mat.m11;
+			m12 = mat.m12;
+			m13 = mat.m13;
+			m14 = mat.m14;
+			m21 = mat.m21;
+			m22 = mat.m22;
+			m23 = mat.m23;
+			m24 = mat.m24;
+			m31 = mat.m31;
+			m32 = mat.m32;
+			m33 = mat.m33;
+			m34 = mat.m34;
+			m41 = mat.m41;
+			m42 = mat.m42;
+			m43 = mat.m43;
+			m44 = mat.m44;
 		}
 
 		Matrix4<T> operator+(const Matrix4<T>& mat)
 		{
 			Matrix4<T> newMat(*this);
-			newMat.m11_ += mat.m11_;
-			newMat.m12_ += mat.m12_;
-			newMat.m13_ += mat.m13_;
-			newMat.m14_ += mat.m14_;
-			newMat.m21_ += mat.m21_;
-			newMat.m22_ += mat.m22_;
-			newMat.m23_ += mat.m23_;
-			newMat.m24_ += mat.m24_;
-			newMat.m31_ += mat.m31_;
-			newMat.m32_ += mat.m32_;
-			newMat.m33_ += mat.m33_;
-			newMat.m34_ += mat.m34_;
-			newMat.m41_ += mat.m41_;
-			newMat.m42_ += mat.m42_;
-			newMat.m43_ += mat.m43_;
-			newMat.m44_ += mat.m44_;
+			newMat.m11 += mat.m11;
+			newMat.m12 += mat.m12;
+			newMat.m13 += mat.m13;
+			newMat.m14 += mat.m14;
+			newMat.m21 += mat.m21;
+			newMat.m22 += mat.m22;
+			newMat.m23 += mat.m23;
+			newMat.m24 += mat.m24;
+			newMat.m31 += mat.m31;
+			newMat.m32 += mat.m32;
+			newMat.m33 += mat.m33;
+			newMat.m34 += mat.m34;
+			newMat.m41 += mat.m41;
+			newMat.m42 += mat.m42;
+			newMat.m43 += mat.m43;
+			newMat.m44 += mat.m44;
 			return newMat;
 		}
 
 		Matrix4<T> operator-(const Matrix4<T>& mat)
 		{
 			Matrix4<T> newMat(*this);
-			newMat.m11_ -= mat.m11_;
-			newMat.m12_ -= mat.m12_;
-			newMat.m13_ -= mat.m13_;
-			newMat.m14_ -= mat.m14_;
-			newMat.m21_ -= mat.m21_;
-			newMat.m22_ -= mat.m22_;
-			newMat.m23_ -= mat.m23_;
-			newMat.m24_ -= mat.m24_;
-			newMat.m31_ -= mat.m31_;
-			newMat.m32_ -= mat.m32_;
-			newMat.m33_ -= mat.m33_;
-			newMat.m34_ -= mat.m34_;
-			newMat.m41_ -= mat.m41_;
-			newMat.m42_ -= mat.m42_;
-			newMat.m43_ -= mat.m43_;
-			newMat.m44_ -= mat.m44_;
+			newMat.m11 -= mat.m11;
+			newMat.m12 -= mat.m12;
+			newMat.m13 -= mat.m13;
+			newMat.m14 -= mat.m14;
+			newMat.m21 -= mat.m21;
+			newMat.m22 -= mat.m22;
+			newMat.m23 -= mat.m23;
+			newMat.m24 -= mat.m24;
+			newMat.m31 -= mat.m31;
+			newMat.m32 -= mat.m32;
+			newMat.m33 -= mat.m33;
+			newMat.m34 -= mat.m34;
+			newMat.m41 -= mat.m41;
+			newMat.m42 -= mat.m42;
+			newMat.m43 -= mat.m43;
+			newMat.m44 -= mat.m44;
 			return newMat;
 		}
 
 		Matrix4<T> operator*(T s)
 		{
 			Matrix4<T> newMat(*this);
-			newMat.m11_ *= s;
-			newMat.m12_ *= s;
-			newMat.m13_ *= s;
-			newMat.m14_ *= s;
-			newMat.m21_ *= s;
-			newMat.m22_ *= s;
-			newMat.m23_ *= s;
-			newMat.m24_ *= s;
-			newMat.m31_ *= s;
-			newMat.m32_ *= s;
-			newMat.m33_ *= s;
-			newMat.m34_ *= s;
-			newMat.m41_ *= s;
-			newMat.m42_ *= s;
-			newMat.m43_ *= s;
-			newMat.m44_ *= s;
+			newMat.m11 *= s;
+			newMat.m12 *= s;
+			newMat.m13 *= s;
+			newMat.m14 *= s;
+			newMat.m21 *= s;
+			newMat.m22 *= s;
+			newMat.m23 *= s;
+			newMat.m24 *= s;
+			newMat.m31 *= s;
+			newMat.m32 *= s;
+			newMat.m33 *= s;
+			newMat.m34 *= s;
+			newMat.m41 *= s;
+			newMat.m42 *= s;
+			newMat.m43 *= s;
+			newMat.m44 *= s;
 			return newMat;
 		}
 
 		Matrix4<T> operator/(T s)
 		{
 			Matrix4<T> newMat(*this);
-			newMat.m11_ /= s;
-			newMat.m12_ /= s;
-			newMat.m13_ /= s;
-			newMat.m14_ /= s;
-			newMat.m21_ /= s;
-			newMat.m22_ /= s;
-			newMat.m23_ /= s;
-			newMat.m24_ /= s;
-			newMat.m31_ /= s;
-			newMat.m32_ /= s;
-			newMat.m33_ /= s;
-			newMat.m34_ /= s;
-			newMat.m41_ /= s;
-			newMat.m42_ /= s;
-			newMat.m43_ /= s;
-			newMat.m44_ /= s;
+			newMat.m11 /= s;
+			newMat.m12 /= s;
+			newMat.m13 /= s;
+			newMat.m14 /= s;
+			newMat.m21 /= s;
+			newMat.m22 /= s;
+			newMat.m23 /= s;
+			newMat.m24 /= s;
+			newMat.m31 /= s;
+			newMat.m32 /= s;
+			newMat.m33 /= s;
+			newMat.m34 /= s;
+			newMat.m41 /= s;
+			newMat.m42 /= s;
+			newMat.m43 /= s;
+			newMat.m44 /= s;
 			return newMat;
 		}
 
 		Matrix4<T> transpose() const
 		{
 			Matrix4<T> mat(*this);
-			mat.m12_ = m21_;
-			mat.m13_ = m31_;
-			mat.m14_ = m41_;
-			mat.m21_ = m12_;
-			mat.m23_ = m32_;
-			mat.m24_ = m42_;
-			mat.m31_ = m13_;
-			mat.m32_ = m23_;
-			mat.m34_ = m43_;
-			mat.m41_ = m14_;
-			mat.m42_ = m24_;
-			mat.m43_ = m34_;
+			mat.m12 = m21;
+			mat.m13 = m31;
+			mat.m14 = m41;
+			mat.m21 = m12;
+			mat.m23 = m32;
+			mat.m24 = m42;
+			mat.m31 = m13;
+			mat.m32 = m23;
+			mat.m34 = m43;
+			mat.m41 = m14;
+			mat.m42 = m24;
+			mat.m43 = m34;
 			return mat;
 		}
 
@@ -910,106 +910,106 @@ namespace algebra
 		{
 			Matrix4<T> newMat(*this);
 
-			newMat.m11_ = Vec4<T>(m11_, m12_, m13_, m14_)*Vec4<T>(m.m11_, m.m21_, m.m31_, m.m41_);
-			newMat.m12_ = Vec4<T>(m11_, m12_, m13_, m14_)*Vec4<T>(m.m12_, m.m22_, m.m32_, m.m42_);
-			newMat.m13_ = Vec4<T>(m11_, m12_, m13_, m14_)*Vec4<T>(m.m13_, m.m23_, m.m33_, m.m43_);
-			newMat.m14_ = Vec4<T>(m11_, m12_, m13_, m14_)*Vec4<T>(m.m14_, m.m24_, m.m34_, m.m44_);
+			newMat.m11 = Vec4<T>(m11, m12, m13, m14)*Vec4<T>(m.m11, m.m21, m.m31, m.m41);
+			newMat.m12 = Vec4<T>(m11, m12, m13, m14)*Vec4<T>(m.m12, m.m22, m.m32, m.m42);
+			newMat.m13 = Vec4<T>(m11, m12, m13, m14)*Vec4<T>(m.m13, m.m23, m.m33, m.m43);
+			newMat.m14 = Vec4<T>(m11, m12, m13, m14)*Vec4<T>(m.m14, m.m24, m.m34, m.m44);
 
-			newMat.m21_ = Vec4<T>(m21_, m22_, m23_, m24_)*Vec4<T>(m.m11_, m.m21_, m.m31_, m.m41_);
-			newMat.m22_ = Vec4<T>(m21_, m22_, m23_, m24_)*Vec4<T>(m.m12_, m.m22_, m.m32_, m.m42_);
-			newMat.m23_ = Vec4<T>(m21_, m22_, m23_, m24_)*Vec4<T>(m.m13_, m.m23_, m.m33_, m.m43_);
-			newMat.m24_ = Vec4<T>(m21_, m22_, m23_, m24_)*Vec4<T>(m.m14_, m.m24_, m.m34_, m.m44_);
+			newMat.m21 = Vec4<T>(m21, m22, m23, m24)*Vec4<T>(m.m11, m.m21, m.m31, m.m41);
+			newMat.m22 = Vec4<T>(m21, m22, m23, m24)*Vec4<T>(m.m12, m.m22, m.m32, m.m42);
+			newMat.m23 = Vec4<T>(m21, m22, m23, m24)*Vec4<T>(m.m13, m.m23, m.m33, m.m43);
+			newMat.m24 = Vec4<T>(m21, m22, m23, m24)*Vec4<T>(m.m14, m.m24, m.m34, m.m44);
 
-			newMat.m31_ = Vec4<T>(m31_, m32_, m33_, m34_)*Vec4<T>(m.m11_, m.m21_, m.m31_, m.m41_);
-			newMat.m32_ = Vec4<T>(m31_, m32_, m33_, m34_)*Vec4<T>(m.m12_, m.m22_, m.m32_, m.m42_);
-			newMat.m33_ = Vec4<T>(m31_, m32_, m33_, m34_)*Vec4<T>(m.m13_, m.m23_, m.m33_, m.m43_);
-			newMat.m34_ = Vec4<T>(m31_, m32_, m33_, m34_)*Vec4<T>(m.m14_, m.m24_, m.m34_, m.m44_);
+			newMat.m31 = Vec4<T>(m31, m32, m33, m34)*Vec4<T>(m.m11, m.m21, m.m31, m.m41);
+			newMat.m32 = Vec4<T>(m31, m32, m33, m34)*Vec4<T>(m.m12, m.m22, m.m32, m.m42);
+			newMat.m33 = Vec4<T>(m31, m32, m33, m34)*Vec4<T>(m.m13, m.m23, m.m33, m.m43);
+			newMat.m34 = Vec4<T>(m31, m32, m33, m34)*Vec4<T>(m.m14, m.m24, m.m34, m.m44);
 
-			newMat.m41_ = Vec4<T>(m41_, m42_, m43_, m44_)*Vec4<T>(m.m11_, m.m21_, m.m31_, m.m41_);
-			newMat.m42_ = Vec4<T>(m41_, m42_, m43_, m44_)*Vec4<T>(m.m12_, m.m22_, m.m32_, m.m42_);
-			newMat.m43_ = Vec4<T>(m41_, m42_, m43_, m44_)*Vec4<T>(m.m13_, m.m23_, m.m33_, m.m43_);
-			newMat.m44_ = Vec4<T>(m41_, m42_, m43_, m44_)*Vec4<T>(m.m14_, m.m24_, m.m34_, m.m44_);
+			newMat.m41 = Vec4<T>(m41, m42, m43, m44)*Vec4<T>(m.m11, m.m21, m.m31, m.m41);
+			newMat.m42 = Vec4<T>(m41, m42, m43, m44)*Vec4<T>(m.m12, m.m22, m.m32, m.m42);
+			newMat.m43 = Vec4<T>(m41, m42, m43, m44)*Vec4<T>(m.m13, m.m23, m.m33, m.m43);
+			newMat.m44 = Vec4<T>(m41, m42, m43, m44)*Vec4<T>(m.m14, m.m24, m.m34, m.m44);
 
 			return newMat;
 		}
 
 		T det() const
 		{
-			Matrix3<T> mat1(m22_, m23_, m24_,
-				m32_, m33_, m34_,
-				m42_, m43_, m44_);
+			Matrix3<T> mat1(m22, m23, m24,
+				m32, m33, m34,
+				m42, m43, m44);
 
-			Matrix3<T> mat2(m21_, m23_, m24_,
-				m31_, m33_, m34_,
-				m41_, m43_, m44_);
+			Matrix3<T> mat2(m21, m23, m24,
+				m31, m33, m34,
+				m41, m43, m44);
 
-			Matrix3<T> mat3(m21_, m22_, m24_,
-				m31_, m32_, m34_,
-				m41_, m42_, m44_);
+			Matrix3<T> mat3(m21, m22, m24,
+				m31, m32, m34,
+				m41, m42, m44);
 
-			Matrix3<T> mat4(m21_, m22_, m23_,
-				m31_, m32_, m33_,
-				m41_, m42_, m43_);
+			Matrix3<T> mat4(m21, m22, m23,
+				m31, m32, m33,
+				m41, m42, m43);
 
-			return m11_ * mat1.det() - m12_ * mat2.det() +
-				m13_ * mat3.det() - m14_ * mat4.det();
+			return m11 * mat1.det() - m12 * mat2.det() +
+				m13 * mat3.det() - m14 * mat4.det();
 		}
 
 		Matrix4<T> minor() const
 		{
 			Matrix4<T> mat(*this);
 
-			mat.m11_ = Matrix3<T>(m22_, m23_, m24_,
-								  m32_, m33_, m34_,
-								  m42_, m43_, m44_).det();
-			mat.m12_ = Matrix3<T>(m21_, m23_, m24_,
-								  m31_, m33_, m34_,
-								  m41_, m43_, m44_).det();
-			mat.m13_ = Matrix3<T>(m21_, m22_, m24_,
-								  m31_, m32_, m34_,
-								  m41_, m42_, m44_).det();
-			mat.m14_ = Matrix3<T>(m21_, m22_, m23_,
-								  m31_, m32_, m33_,
-								  m41_, m42_, m43_).det();
+			mat.m11 = Matrix3<T>(m22, m23, m24,
+								  m32, m33, m34,
+								  m42, m43, m44).det();
+			mat.m12 = Matrix3<T>(m21, m23, m24,
+								  m31, m33, m34,
+								  m41, m43, m44).det();
+			mat.m13 = Matrix3<T>(m21, m22, m24,
+								  m31, m32, m34,
+								  m41, m42, m44).det();
+			mat.m14 = Matrix3<T>(m21, m22, m23,
+								  m31, m32, m33,
+								  m41, m42, m43).det();
 			
-			mat.m21_ = Matrix3<T>(m12_, m13_, m14_,
-								  m32_, m33_, m34_,
-								  m42_, m43_, m44_).det();
-			mat.m22_ = Matrix3<T>(m11_, m13_, m14_,
-								  m31_, m33_, m34_,
-								  m41_, m43_, m44_).det();
-			mat.m23_ = Matrix3<T>(m11_, m12_, m14_,
-								  m31_, m32_, m34_,
-								  m41_, m42_, m44_).det();
-			mat.m24_ = Matrix3<T>(m11_, m12_, m13_,
-								  m31_, m32_, m33_,
-								  m41_, m42_, m43_).det();
+			mat.m21 = Matrix3<T>(m12, m13, m14,
+								  m32, m33, m34,
+								  m42, m43, m44).det();
+			mat.m22 = Matrix3<T>(m11, m13, m14,
+								  m31, m33, m34,
+								  m41, m43, m44).det();
+			mat.m23 = Matrix3<T>(m11, m12, m14,
+								  m31, m32, m34,
+								  m41, m42, m44).det();
+			mat.m24 = Matrix3<T>(m11, m12, m13,
+								  m31, m32, m33,
+								  m41, m42, m43).det();
 			
-			mat.m31_ = Matrix3<T>(m12_, m13_, m14_,
-								  m22_, m23_, m24_,
-								  m42_, m43_, m44_).det();
-			mat.m32_ = Matrix3<T>(m11_, m13_, m14_,
-								  m21_, m23_, m24_,
-								  m41_, m43_, m44_).det();
-			mat.m33_ = Matrix3<T>(m11_, m12_, m14_,
-								  m21_, m22_, m24_,
-								  m41_, m42_, m44_).det();
-			mat.m34_ = Matrix3<T>(m11_, m12_, m13_,
-								  m21_, m22_, m23_,
-								  m41_, m42_, m43_).det();
+			mat.m31 = Matrix3<T>(m12, m13, m14,
+								  m22, m23, m24,
+								  m42, m43, m44).det();
+			mat.m32 = Matrix3<T>(m11, m13, m14,
+								  m21, m23, m24,
+								  m41, m43, m44).det();
+			mat.m33 = Matrix3<T>(m11, m12, m14,
+								  m21, m22, m24,
+								  m41, m42, m44).det();
+			mat.m34 = Matrix3<T>(m11, m12, m13,
+								  m21, m22, m23,
+								  m41, m42, m43).det();
 			
-			mat.m41_ = Matrix3<T>(m12_, m13_, m14_,
-								  m22_, m23_, m24_,
-								  m32_, m33_, m34_).det();
-			mat.m42_ = Matrix3<T>(m11_, m13_, m14_,
-								  m21_, m23_, m24_,
-								  m31_, m33_, m34_).det();
-			mat.m43_ = Matrix3<T>(m11_, m12_, m14_,
-								  m21_, m22_, m24_,
-								  m31_, m32_, m34_).det();
-			mat.m44_ = Matrix3<T>(m11_, m12_, m13_,
-								  m21_, m22_, m23_,
-								  m31_, m32_, m33_).det();
+			mat.m41 = Matrix3<T>(m12, m13, m14,
+								  m22, m23, m24,
+								  m32, m33, m34).det();
+			mat.m42 = Matrix3<T>(m11, m13, m14,
+								  m21, m23, m24,
+								  m31, m33, m34).det();
+			mat.m43 = Matrix3<T>(m11, m12, m14,
+								  m21, m22, m24,
+								  m31, m32, m34).det();
+			mat.m44 = Matrix3<T>(m11, m12, m13,
+								  m21, m22, m23,
+								  m31, m32, m33).det();
 
 			return mat;
 		}
@@ -1017,10 +1017,10 @@ namespace algebra
 		Matrix4<T> cofactor() const
 		{
 			Matrix4<T> mat = minor();
-			return Matrix4<T>(mat.m11_, -mat.m12_, mat.m13_, -mat.m14_,
-							 -mat.m21_, mat.m22_, -mat.m23_, mat.m24_,
-							 mat.m31_, -mat.m32_, mat.m33_, mat.m34_,
-							 -mat.m41_, mat.m42_, -mat.m43_, mat.m44_);
+			return Matrix4<T>(mat.m11, -mat.m12, mat.m13, -mat.m14,
+							 -mat.m21, mat.m22, -mat.m23, mat.m24,
+							 mat.m31, -mat.m32, mat.m33, mat.m34,
+							 -mat.m41, mat.m42, -mat.m43, mat.m44);
 		}
 
 		Matrix4<T> adj() const
@@ -1035,10 +1035,10 @@ namespace algebra
 
 		friend std::ostream& operator<<(std::ostream& out, const Matrix4<T>& m)
 		{
-			out << "[" << m.m11_ << ", " << m.m12_ << ", " << m.m13_ << ", " << m.m14_ << "\n";
-			out << m.m21_ << ", " << m.m22_ << ", " << m.m23_ << ", " << m.m24_ << "\n";
-			out << m.m31_ << ", " << m.m32_ << ", " << m.m33_ << ", " << m.m34_ << "\n";
-			out << m.m41_ << ", " << m.m42_ << ", " << m.m43_ << ", " << m.m44_ << "]\n";
+			out << "[" << m.m11 << ", " << m.m12 << ", " << m.m13 << ", " << m.m14 << "\n";
+			out << m.m21 << ", " << m.m22 << ", " << m.m23 << ", " << m.m24 << "\n";
+			out << m.m31 << ", " << m.m32 << ", " << m.m33 << ", " << m.m34 << "\n";
+			out << m.m41 << ", " << m.m42 << ", " << m.m43 << ", " << m.m44 << "]\n";
 			return out;
 		}
 
@@ -1049,64 +1049,64 @@ namespace algebra
 				            0, 0, -zf*zn/(zf-zn), 0);
 		}
 
-		T m11_;
-		T m12_;
-		T m13_;
-		T m14_;
-		T m21_;
-		T m22_;
-		T m23_;
-		T m24_;
-		T m31_;
-		T m32_;
-		T m33_;
-		T m34_;
-		T m41_;
-		T m42_;
-		T m43_;
-		T m44_;
+		T m11;
+		T m12;
+		T m13;
+		T m14;
+		T m21;
+		T m22;
+		T m23;
+		T m24;
+		T m31;
+		T m32;
+		T m33;
+		T m34;
+		T m41;
+		T m42;
+		T m43;
+		T m44;
 	};
 
 	template <typename T>
 	class Quaternion {
 
 	public:
-		Quaternion(T x, T y, T z, T w) : x_(x), y_(y), z_(z), w_(w) {}
-		Quaternion(const Quaternion<T>& q) : x_(q.x_), y_(q.y_), z_(q.z_), w_(q.w_) {}
+		Quaternion(T x, T y, T z, T w) : x(x), y(y), z(z), w(w) {}
+		Quaternion(const Quaternion<T>& q) : x(q.x), y(q.y), z(q.z), w(q.w) {}
 		Quaternion(const Vec3<T>& v) // yaw (Z), pitch (Y), roll (X)
 		{
-			double cy = cos(v.z_ * 0.5);
-			double sy = sin(v.z_ * 0.5);
-			double cp = cos(v.y_ * 0.5);
-			double sp = sin(v.y_ * 0.5);
-			double cr = cos(v.x_ * 0.5);
-			double sr = sin(v.x_ * 0.5);
+			double cy = cos(v.z * 0.5);
+			double sy = sin(v.z * 0.5);
+			double cp = cos(v.y * 0.5);
+			double sp = sin(v.y * 0.5);
+			double cr = cos(v.x * 0.5);
+			double sr = sin(v.x * 0.5);
 
-			w_ = cy * cp * cr + sy * sp * sr;
-			x_ = cy * cp * sr - sy * sp * cr;
-			y_ = sy * cp * sr + cy * sp * cr;
-			z_ = sy * cp * cr - cy * sp * sr;
+			w = cy * cp * cr + sy * sp * sr;
+			x = cy * cp * sr - sy * sp * cr;
+			y = sy * cp * sr + cy * sp * cr;
+			z = sy * cp * cr - cy * sp * sr;
 
 		}
 		Vec3<T> ToVec3(const Quaternion<T>& q) const
 		{
 			Vec3<T> vec(0,0,0);
 			// roll (x-axis rotation)
-			double sinr_cosp = +2.0 * (q.w_ * q.x_ + q.y_ * q.z_);
-			double cosr_cosp = +1.0 - 2.0 * (q.x_ * q.x_ + q.y_ * q.y_);
-			vec.x_ = atan2(sinr_cosp, cosr_cosp);
+			double sinr_cosp = +2.0 * (q.w * q.x + q.y * q.z);
+			double cosr_cosp = +1.0 - 2.0 * (q.x * q.x + q.y * q.y);
+			vec.x = atan2(sinr_cosp, cosr_cosp);
 
 			// pitch (y-axis rotation)
-			double sinp = +2.0 * (q.w_ * q.y_ - q.z_ * q.x_);
+			double sinp = +2.0 * (q.w * q.y - q.z * q.x);
 			if (fabs(sinp) >= 1)
-				vec.y_ = copysign(M_PI / 2, sinp); // use 90 degrees if out of range
+				vec.y = copysign(M_PI / 2, sinp); // use 90 degrees if out of range
 			else
-				vec.y_ = asin(sinp);
+				vec.y = asin(sinp);
 
 			// yaw (z-axis rotation)
-			double siny_cosp = +2.0 * (q.w_ * q.z_ + q.x_ * q.y_);
-			double cosy_cosp = +1.0 - 2.0 * (q.y_ * q.y_ + q.z_ * q.z_);
-			vec.z_ = atan2(siny_cosp, cosy_cosp);
+			double sinycosp = +2.0 * (q.w * q.z + q.x * q.y);
+			double cosycosp = +1.0 - 2.0 * (q.y * q.y + q.z * q.z);
+			vec.z = atan2(sinycosp, cosycosp);
 
 			return vec;
 		}
@@ -1114,25 +1114,25 @@ namespace algebra
 		Quaternion<T> operator+(const Quaternion<T>& q) const
 		{
 			Quaternion<T> qua(*this);
-			qua.x_ += q.x_;
-			qua.y_ += q.y_;
-			qua.z_ += q.z_;
-			qua.w_ += q.w_;
+			qua.x += q.x;
+			qua.y += q.y;
+			qua.z += q.z;
+			qua.w += q.w;
 
 			return qua;
 		}
 
 		Quaternion<T> operator*(const Quaternion<T>& q) const
 		{
-			return Quaternion<T>(x_ * q.x_ - y_ * q.y_ - z_ * q.z_ - w_ * q.w_,
-				                 x_ * q.y_ + y_ * q.x_ + z_ * q.w_ - w_ * q.z_,
-				                 x_ * q.z_ - y_ * q.w_ + z_ * q.x_ + w_ * q.y_,
-				                 x_ * q.w_ + y_ * q.z_ - z_ * q.y_ + w_ * q.x_);
+			return Quaternion<T>(x * q.x - y * q.y - z * q.z - w * q.w,
+				                 x * q.y + y * q.x + z * q.w - w * q.z,
+				                 x * q.z - y * q.w + z * q.x + w * q.y,
+				                 x * q.w + y * q.z - z * q.y + w * q.x);
 		}
 
 		Quaternion<T> inv() const
 		{
-			return Quaternion<T>(x_, -y_, -z_, -w_);
+			return Quaternion<T>(x, -y, -z, -w);
 		}
 
 		Vec3<T> rotate(const Vec3<T>& v) const
@@ -1145,14 +1145,14 @@ namespace algebra
 
 		friend std::ostream& operator<<(std::ostream& out, const Quaternion<T>& v)
 		{
-			out << "{" << v.x_ << ", " << v.y_ << ", " << v.z_ << ", " << v.w_ << "}\n";
+			out << "{" << v.x << ", " << v.y << ", " << v.z << ", " << v.w << "}\n";
 			return out;
 		}
 		
-		T x_;
-		T y_;
-		T z_;
-		T w_;
+		T x;
+		T y;
+		T z;
+		T w;
 
 	};
 
@@ -1161,8 +1161,8 @@ namespace algebra
 	Vec2<T> operator*(const Vec2<T>& v, const Matrix2<T>& m)
 	{
 		Vec2<T> newVec(v);
-		newVec.x_ = Vec2<T>(m.m11_, m.m21_)*v;
-		newVec.y_ = Vec2<T>(m.m12_, m.m22_)*v;
+		newVec.x = Vec2<T>(m.m11, m.m21)*v;
+		newVec.y = Vec2<T>(m.m12, m.m22)*v;
 
 		return newVec;
 	}
@@ -1171,9 +1171,9 @@ namespace algebra
 	Vec3<T> operator*(const Vec3<T>& v, const Matrix3<T>& m)
 	{
 		Vec3<T> newVec(v);
-		newVec.x_ = Vec3<T>(m.m11_, m.m21_, m.m31_)*v;
-		newVec.y_ = Vec3<T>(m.m12_, m.m22_, m.m32_)*v;
-		newVec.z_ = Vec3<T>(m.m13_, m.m23_, m.m33_)*v;
+		newVec.x = Vec3<T>(m.m11, m.m21, m.m31)*v;
+		newVec.y = Vec3<T>(m.m12, m.m22, m.m32)*v;
+		newVec.z = Vec3<T>(m.m13, m.m23, m.m33)*v;
 
 		return newVec;
 	}
@@ -1183,10 +1183,10 @@ namespace algebra
 	{
 		Vec4<T> newVec(v);
 		
-		newVec.x_ = Vec4<T>(m.m11_, m.m21_, m.m31_, m.m41_)*v;
-		newVec.y_ = Vec4<T>(m.m12_, m.m22_, m.m32_, m.m42_)*v;
-		newVec.z_ = Vec4<T>(m.m13_, m.m23_, m.m33_, m.m43_)*v;
-		newVec.w_ = Vec4<T>(m.m14_, m.m24_, m.m34_, m.m44_)*v;
+		newVec.x = Vec4<T>(m.m11, m.m21, m.m31, m.m41)*v;
+		newVec.y = Vec4<T>(m.m12, m.m22, m.m32, m.m42)*v;
+		newVec.z = Vec4<T>(m.m13, m.m23, m.m33, m.m43)*v;
+		newVec.w = Vec4<T>(m.m14, m.m24, m.m34, m.m44)*v;
 
 		return newVec;
 	}

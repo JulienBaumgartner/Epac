@@ -26,11 +26,11 @@ std::vector<algebra::Vec3<float>> Mesh::project(const std::vector<algebra::Vec3<
 		v4 = v4 * projection;
 
 		algebra::Vec3<float> v3(points[i]);
-		if (v4.w_ != 0) 
+		if (v4.w != 0) 
 		{
-		 v3.x_ = v4.x_ / v4.w_;
-		 v3.y_ = v4.y_ / v4.w_;
-		 v3.z_ = v4.z_ / v4.w_;
+		 v3.x = v4.x / v4.w;
+		 v3.y = v4.y / v4.w;
+		 v3.z = v4.z / v4.w;
 		}
 		
 		projectedPoints.push_back(v3);
@@ -65,20 +65,20 @@ bool Mesh::ExtractObj(const std::string & path)
 			{
 			case 'v':
 
-				points_.push_back(algebra::Vec3<float>(std::stof(splitStr[1]),
+				points.push_back(algebra::Vec3<float>(std::stof(splitStr[1]),
 					std::stof(splitStr[2]), std::stof(splitStr[3]))); 
-				p.w_ = 1;
-				p.x_ = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-				p.y_ = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-				p.z_ = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-				colors_.push_back(p);
+				p.w = 1;
+				p.x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+				p.y = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+				p.z = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+				colors.push_back(p);
 
 				break;
 			case 'f':
 
-				indices_.push_back(std::stoi(splitStr[1])-1);
-				indices_.push_back(std::stoi(splitStr[2])-1);
-				indices_.push_back(std::stoi(splitStr[3])-1);
+				indices.push_back(std::stoi(splitStr[1])-1);
+				indices.push_back(std::stoi(splitStr[2])-1);
+				indices.push_back(std::stoi(splitStr[3])-1);
 				break;
 			}
 		}

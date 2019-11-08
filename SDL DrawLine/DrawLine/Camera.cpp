@@ -18,10 +18,10 @@ algebra::Matrix4<float> Camera::View() const
 	algebra::Vec3<float> r = (f^u).normalize();
 
 	return algebra::Matrix4<float>(
-		r.x_, r.y_, r.z_, 0,
-		u.x_, u.y_, u.z_, 0,
-		f.x_, f.y_, f.z_, 0,
-		position.x_, position.y_, position.z_, 1);
+		r.x, r.y, r.z, 0,
+		u.x, u.y, u.z, 0,
+		f.x, f.y, f.z, 0,
+		position.x, position.y, position.z, 1);
 
 }
 
@@ -32,9 +32,9 @@ algebra::Matrix4<float> Camera::ViewInv() const
 	algebra::Vec3<float> r = (f^u).normalize();
 
 	return algebra::Matrix4<float>(
-		r.x_, u.x_, f.x_, 0,
-		r.y_, u.y_, f.y_, 0,
-		r.z_, u.z_, f.z_, 0,
+		r.x, u.x, f.x, 0,
+		r.y, u.y, f.y, 0,
+		r.z, u.z, f.z, 0,
 		-(position*r), -(position*u), -(position*f), 1);
 
 }

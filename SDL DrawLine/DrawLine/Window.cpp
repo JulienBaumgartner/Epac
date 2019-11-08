@@ -5,32 +5,32 @@
 #include "Image.h"
 
 
-Window::Window(Image& image, Camera& camera, std::shared_ptr<EventsManagerInterface> events_manager) : image_(image), camera_(camera)
+Window::Window(Image& image, Camera& camera, std::shared_ptr<EventsManagerInterface> events_manager) : image(image), camera(camera)
 {
-	screen_width_ = image.image_width;
-	screen_height_ = image.image_height;
-	events_manager_ = events_manager;
+	screenWidth = image.imageWidth;
+	screenHeight = image.imageHeight;
+	eventsManager = events_manager;
 	SDL_Init(SDL_INIT_VIDEO);
-	window_ = SDL_CreateWindow("Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screen_width_, screen_height_, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow("Test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_OPENGL);
 	init();
 }
 
 
 Window::~Window()
 {
-	SDL_DestroyWindow(window_);
+	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
 
 void Window::render()
 {
 	glTexImage2D(GL_TEXTURE_2D,
-		0, GL_RGBA, screen_width_, screen_height_,
-		0, GL_RGBA, GL_FLOAT, &image_.current_image[0]);
+		0, GL_RGBA, screenWidth, screenHeight,
+		0, GL_RGBA, GL_FLOAT, &image.currentImage[0]);
 
 	glClear(GL_COLOR_BUFFER_BIT);
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texture_id_);
+	glBindTexture(GL_TEXTURE_2D, textureId);
 	{
 		glPushMatrix();
 		glBegin(GL_QUADS);
@@ -50,7 +50,7 @@ void Window::render()
 	glDisable(GL_TEXTURE_2D);
 	glFlush();
 
-	SDL_GL_SwapWindow(window_);
+	SDL_GL_SwapWindow(window);
 }
 
 static float t = 0;
@@ -61,19 +61,19 @@ void Window::run()
 	while (loop)
 	{
 		t += 3;
-		std::fill(image_.current_image.begin(), image_.current_image.end(), algebra::Vec4<float>(0.2f,0,0.2f,1));
-		std::fill(image_.z_buffer.begin(), image_.z_buffer.end(), -10000);
+		std::fill(image.currentImage.begin(), image.currentImage.end(), algebra::Vec4<float>(0.2f,0,0.2f,1));
+		std::fill(image.zBuffer.begin(), image.zBuffer.end(), -10000);
 
-		algebra::Matrix4<float> m_view = camera_.View().inv();
+		algebra::Matrix4<float> m_view = camera.View().inv();
 
 		while (SDL_PollEvent(&event))
 		{
-			loop = events_manager_->manage_events(image_, event, camera_);
+			loop = eventsManager->manageEvents(image, event, camera);
 		}
 
-		for (Mesh m : meshes_) 
+		for (Mesh m : meshes) 
 		{
-			image_.drawMesh(m, m_view, camera_, t);
+			image.drawMesh(m, m_view, camera, t);
 		}
 		render();
 	}
@@ -83,7 +83,7 @@ void Window::run()
 void Window::init()
 {
 
-	auto sdl_gl_context = SDL_GL_CreateContext(window_);
+	auto sdl_gl_context = SDL_GL_CreateContext(window);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
@@ -91,9 +91,9 @@ void Window::init()
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 
-	glGenTextures(1, &texture_id_);
+	glGenTextures(1, &textureId);
 
-	glBindTexture(GL_TEXTURE_2D, texture_id_);
+	glBindTexture(GL_TEXTURE_2D, textureId);
 	glTexParameteri(GL_TEXTURE_2D,
 		GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D,
@@ -104,5 +104,5 @@ void Window::init()
 
 void Window::addMesh(const Mesh& mesh) 
 {
-	meshes_.push_back(mesh);
+	meshes.push_back(mesh);
 }

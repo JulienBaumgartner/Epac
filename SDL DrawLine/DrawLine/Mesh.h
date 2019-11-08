@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include "Algebra.h"
-#include "Pixel.h"
 
 class Mesh
 {
@@ -12,9 +11,9 @@ public:
 	std::vector<algebra::Vec3<float>> project(const std::vector<algebra::Vec3<float>>& points, int w, int h, const algebra::Matrix4<float>& m_view) const;
 	bool ExtractObj(const std::string& path);
 
-	std::vector<algebra::Vec3<float>> points_;
-	std::vector<int> indices_;
-	std::vector<algebra::Vec4<float>> colors_;
+	std::vector<algebra::Vec3<float>> points;
+	std::vector<int> indices;
+	std::vector<algebra::Vec4<float>> colors;
 
 };
 
