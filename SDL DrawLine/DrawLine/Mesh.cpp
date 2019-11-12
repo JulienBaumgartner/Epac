@@ -15,9 +15,9 @@ Mesh::~Mesh()
 }
 
 
-std::vector<algebra::Vec3<float>> Mesh::project(const std::vector<algebra::Vec3<float>>& points, int w, int h, const algebra::Matrix4<float>& m_view) const{
+std::vector<algebra::Vec4<float>> Mesh::project(const std::vector<algebra::Vec4<float>>& points, int w, int h, const algebra::Matrix4<float>& m_view) const{
 	algebra::Matrix4<float> projection = algebra::Matrix4<float>::projectionMatrix(w, h, 0.1, 100000, 90 *M_PI /180);
-	std::vector<algebra::Vec3<float>> projectedPoints;
+	std::vector<algebra::Vec4<float>> projectedPoints;
 
 	for (int i = 0; i < points.size(); i++) {
 		algebra::Vec4<float> v4(points[i]);
@@ -25,15 +25,14 @@ std::vector<algebra::Vec3<float>> Mesh::project(const std::vector<algebra::Vec3<
 		v4 = v4 * m_view;
 		v4 = v4 * projection;
 
-		algebra::Vec3<float> v3(points[i]);
 		if (v4.w != 0) 
 		{
-		 v3.x = v4.x / v4.w;
-		 v3.y = v4.y / v4.w;
-		 v3.z = v4.z / v4.w;
+		 v4.x = v4.x / v4.w;
+		 v4.y = v4.y / v4.w;
+		 v4.z = v4.z / v4.w;
 		}
 		
-		projectedPoints.push_back(v3);
+		projectedPoints.push_back(v4);
 	}
 
 	return projectedPoints;
@@ -69,8 +68,8 @@ bool Mesh::ExtractObj(const std::string & path)
 			
 			if (identifier == "v") 
 			{
-				points.push_back(algebra::Vec3<float>(std::stof(splitStr[1]),
-					std::stof(splitStr[2]), std::stof(splitStr[3])));
+				points.push_back(algebra::Vec4<float>(std::stof(splitStr[1]),
+					std::stof(splitStr[2]), std::stof(splitStr[3]), 1));
 				p.w = 1;
 				p.x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 				p.y = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
@@ -119,14 +118,10 @@ void Mesh::loadTexture(const char* path)
 
 	for (i = 0; i < size; i += 3)
 	{
-		unsigned char tmp = data[i];
-		data[i] = data[i + 2];
-		data[i + 2] = tmp;
-
 		algebra::Vec4<float> color(0, 0, 0, 1);
-		color.x = data[i] / 255.0f;
+		color.x = data[i + 2] / 255.0f;
 		color.y = data[i + 1] / 255.0f;
-		color.z = data[i + 2] / 255.0f;
+		color.z = data[i] / 255.0f;
 		textureColors.push_back(color);
 	}
 

@@ -7,6 +7,9 @@
 namespace algebra
 {
 	template <typename T>
+	class Vec4;
+
+	template <typename T>
 	class Vec2
 	{
 	public:
@@ -144,6 +147,7 @@ namespace algebra
 		Vec3() : x(0), y(0), z(0) {}
 		Vec3(T x, T y, T z) : x(x), y(y), z(z) {}
 		Vec3(const Vec3<T>& v) : x(v.x), y(v.y), z(v.z) {}
+		Vec3(const Vec4<T>& v) : x(v.x), y(v.y), z(v.z) {}
 
 		bool operator==(const Vec3<T>& vec) const
 		{

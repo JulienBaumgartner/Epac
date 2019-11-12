@@ -36,7 +36,7 @@ void drawLine()
 
 	Mesh cube;
 
-	cube.ExtractObj("torus.obj");
+	cube.ExtractObj("cube.obj");
 	cube.loadTexture("texture.bmp");
 
 	window.addMesh(cube);
