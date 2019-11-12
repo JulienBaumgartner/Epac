@@ -141,21 +141,31 @@ void Image::drawMesh(const Mesh& mesh, const algebra::Matrix4<float>& m_view, Ca
 	for (int i = 0; i < mesh.indices.size(); i += 3) {
 
 		Vertex a;
-		a.color = mesh.colors[mesh.indices[i]];
 		a.screenPosition = projectedPoints[mesh.indices[i]];
 
 		Vertex b;
-		b.color = mesh.colors[mesh.indices[i+1]];
 		b.screenPosition = projectedPoints[mesh.indices[i+1]];
 
 		Vertex c;
-		c.color = mesh.colors[mesh.indices[i+2]];
 		c.screenPosition = projectedPoints[mesh.indices[i+2]];
+
+		if (mesh.uv.size() == 0) 
+		{
+			a.color = mesh.colors[mesh.indices[i]];
+			b.color = mesh.colors[mesh.indices[i + 1]];
+			c.color = mesh.colors[mesh.indices[i + 2]];
+		}
+		else
+		{
+			a.color = algebra::Vec4<float>(mesh.uv[mesh.indicesUv[i]].x, mesh.uv[mesh.indicesUv[i]].y,0,1);
+			b.color = algebra::Vec4<float>(mesh.uv[mesh.indicesUv[i+1]].x, mesh.uv[mesh.indicesUv[i+1]].y,0,1);
+			c.color = algebra::Vec4<float>(mesh.uv[mesh.indicesUv[i+2]].x, mesh.uv[mesh.indicesUv[i+2]].y,0,1);
+		}
 
 		if (isVisible(camera, projectedPoints[mesh.indices[i]], projectedPoints[mesh.indices[i + 1]],
 			projectedPoints[mesh.indices[i + 2]], points[mesh.indices[i]])) {
 
-			fillTriangle(a, b, c, points[mesh.indices[i]], points[mesh.indices[i+1]], points[mesh.indices[i+2]]);
+			fillTriangle(a, b, c, points[mesh.indices[i]], points[mesh.indices[i+1]], points[mesh.indices[i+2]], mesh);
 
 			
 			/*drawTriangle(camera, algebra::Vec4<float>{ 0,0,0,255 }, projectedPoints[mesh.indices_[i]],
@@ -167,13 +177,15 @@ void Image::drawMesh(const Mesh& mesh, const algebra::Matrix4<float>& m_view, Ca
 
 }
 
-void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1, algebra::Vec3<float> pos2, algebra::Vec3<float> pos3)
+void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1,
+	algebra::Vec3<float> pos2, algebra::Vec3<float> pos3, const Mesh& mesh)
 {
-	algebra::Vec3<float> n = (pos2 - pos1) ^ (pos3 - pos1);
+	algebra::Vec3<float> n;
+	n = (pos2 - pos1) ^ (pos3 - pos1);
 	n = n.normalize();
 
 	algebra::Vec3<float> lightPos(0, 0, 1);
-	algebra::Vec4<float> lightColor(0, 0, 0.5, 1);
+	algebra::Vec4<float> lightColor(0, 0, 0, 1);
 	lightPos = lightPos.normalize();
 	float shade = lightPos * n;
 
@@ -254,7 +266,6 @@ void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1
 	float dr2_3 = lastPoint.color.x - secondPoint.color.x;
 	float dg2_3 = lastPoint.color.y - secondPoint.color.y;
 	float db2_3 = lastPoint.color.z - secondPoint.color.z;
-
 
 	for (int y = firstPoint.screenPosition.y; y <= lastPoint.screenPosition.y; y++)
 	{
@@ -344,6 +355,15 @@ void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1
 					color.x = col.x + dr * (int)(x - xLine1) / dx;
 					color.y = col.y + dg * (int)(x - xLine1) / dx;
 					color.z = col.z + db * (int)(x - xLine1) / dx;
+				}
+
+				if (mesh.textureColors.size() != 0 && mesh.uv.size() > 0) 
+				{
+
+					int pxWidth = std::max(0.0f, std::min(color.x * mesh.textureWidth, mesh.textureWidth -1.0f));
+					int pxHeight = std::max(0.0f, std::min(color.y * mesh.textureHeight, mesh.textureHeight-1.0f));
+
+					color = mesh.textureColors[pxWidth + mesh.textureWidth*pxHeight];
 				}
 
 				color.x = (color.x + lightColor.x) / 2 * shade;

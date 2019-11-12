@@ -3,6 +3,9 @@
 #include <algorithm>
 #include <stdlib.h>
 #include "Image.h"
+#include <iostream>
+#include <chrono>
+#include <ctime>  
 
 
 Window::Window(Image& image, Camera& camera, std::shared_ptr<EventsManagerInterface> events_manager) : image(image), camera(camera)
@@ -54,13 +57,16 @@ void Window::render()
 }
 
 static float t = 0;
+static std::chrono::system_clock::time_point startTime = std::chrono::system_clock::now();
 void Window::run()
 {
 	SDL_Event event;
 	bool loop = true;
 	while (loop)
 	{
-		t += 3;
+		auto currentTime = std::chrono::system_clock::now();
+		std::chrono::duration<float> elapsed_seconds = currentTime - startTime;
+		t = elapsed_seconds.count()*20;
 		std::fill(image.currentImage.begin(), image.currentImage.end(), algebra::Vec4<float>(0.2f,0,0.2f,1));
 		std::fill(image.zBuffer.begin(), image.zBuffer.end(), -10000);
 

@@ -61,25 +61,35 @@ bool Mesh::ExtractObj(const std::string & path)
 			splitStr.push_back(str);
 
 			algebra::Vec4<float> p;
-			switch (splitStr[0][0])
+			std::string identifier;
+			identifier.push_back(splitStr[0][0]);
+			if (splitStr[0][1] != '\0') {
+				identifier.push_back(splitStr[0][1]);
+			}
+			
+			if (identifier == "v") 
 			{
-			case 'v':
-
 				points.push_back(algebra::Vec3<float>(std::stof(splitStr[1]),
-					std::stof(splitStr[2]), std::stof(splitStr[3]))); 
+					std::stof(splitStr[2]), std::stof(splitStr[3])));
 				p.w = 1;
 				p.x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 				p.y = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 				p.z = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 				colors.push_back(p);
-
-				break;
-			case 'f':
-
-				indices.push_back(std::stoi(splitStr[1])-1);
-				indices.push_back(std::stoi(splitStr[2])-1);
-				indices.push_back(std::stoi(splitStr[3])-1);
-				break;
+			}
+			else if(identifier == "f")
+			{
+				importF(splitStr);
+			}
+			else if (identifier == "vt")
+			{
+				uv.push_back(algebra::Vec2<float>(std::stof(splitStr[1]),
+					std::stof(splitStr[2])));
+			}
+			else if (identifier == "vn")
+			{
+				normals.push_back(algebra::Vec3<float>(std::stof(splitStr[1]),
+					std::stof(splitStr[2]), std::stof(splitStr[3])));
 			}
 		}
 
@@ -89,4 +99,63 @@ bool Mesh::ExtractObj(const std::string & path)
 		return false;
 	}
 
+}
+
+void Mesh::loadTexture(const char* path)
+{
+	int i;
+	FILE* f = fopen(path, "rb");
+	unsigned char info[54];
+	fread(info, sizeof(unsigned char), 54, f); // read the 54-byte header
+
+	// extract image height and width from header
+	textureWidth = *(int*)&info[18];
+	textureHeight = *(int*)&info[22];
+
+	int size = 3 * textureWidth * textureHeight;
+	unsigned char* data = new unsigned char[size]; // allocate 3 bytes per pixel
+	fread(data, sizeof(unsigned char), size, f); // read the rest of the data at once
+	fclose(f);
+
+	for (i = 0; i < size; i += 3)
+	{
+		unsigned char tmp = data[i];
+		data[i] = data[i + 2];
+		data[i + 2] = tmp;
+
+		algebra::Vec4<float> color(0, 0, 0, 1);
+		color.x = data[i] / 255.0f;
+		color.y = data[i + 1] / 255.0f;
+		color.z = data[i + 2] / 255.0f;
+		textureColors.push_back(color);
+	}
+
+
+}
+
+void Mesh::importF(std::vector<std::string> str)
+{
+	for (int i = 1; i <= 3; i++) 
+	{
+		std::string delimiter = "/";
+		size_t pos = 0;
+		std::string token;
+
+		std::vector<std::string> splitStr;
+
+		while ((pos = str[i].find(delimiter)) != std::string::npos) {
+			token = str[i].substr(0, pos);
+			splitStr.push_back(token);
+			str[i].erase(0, pos + delimiter.length());
+		}
+		splitStr.push_back(str[i]);
+
+
+		indices.push_back(std::stoi(splitStr[0]) - 1);
+		if (splitStr.size() > 1) 
+		{
+			indicesUv.push_back(std::stoi(splitStr[1]) - 1);
+			indicesNormals.push_back(std::stoi(splitStr[2]) - 1);
+		}
+	}
 }
