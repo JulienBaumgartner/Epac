@@ -36,11 +36,14 @@ ${PROJECT_SOURCE_DIR}/gl_shader/EventsManagerShaderGl.cpp
 ${PROJECT_SOURCE_DIR}/gl_shader/EventsManagerShaderGl.h
 ${PROJECT_SOURCE_DIR}/gl_shader/WindowShaderGl.cpp
 ${PROJECT_SOURCE_DIR}/gl_shader/WindowShaderGl.h
-    )
+${PROJECT_SOURCE_DIR}/gl_shader/Shader.h
+${PROJECT_SOURCE_DIR}/gl_shader/Shader.cpp
+)
 target_link_libraries(gl_shader PRIVATE
     SoftwareGL
     SDL2::SDL2
     SDL2::SDL2main
-    GLEW::GLEW)
+    GLEW::GLEW
+)
 
 
