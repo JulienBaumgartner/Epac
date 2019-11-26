@@ -27,9 +27,7 @@ std::vector<algebra::Vec4<float>> Mesh::project(const std::vector<algebra::Vec4<
 
 		if (v4.w != 0) 
 		{
-		 v4.x = v4.x / v4.w;
-		 v4.y = v4.y / v4.w;
-		 v4.z = v4.z / v4.w;
+		 v4 /= v4.w;
 		}
 		
 		projectedPoints.push_back(v4);

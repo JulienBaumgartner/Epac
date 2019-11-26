@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\git epac\Epac\SDL DrawLine\build\CMakeFiles\a510431dc0f07778f70c334ef7853e03\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{7C9FE078-0EE7-306D-A631-98F17CC5A5D5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,37 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.16/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/Platform/WindowsPaths.cmake
+C:/Program Files/CMake/share/cmake-3.16/Modules/SelectLibraryConfigurations.cmake
+D:/git epac/Epac/SDL DrawLine/CMakeLists.txt
+D:/git epac/Epac/SDL DrawLine/build/CMakeFiles/3.16.0-rc4/CMakeCCompiler.cmake
+D:/git epac/Epac/SDL DrawLine/build/CMakeFiles/3.16.0-rc4/CMakeCXXCompiler.cmake
+D:/git epac/Epac/SDL DrawLine/build/CMakeFiles/3.16.0-rc4/CMakeRCCompiler.cmake
+D:/git epac/Epac/SDL DrawLine/build/CMakeFiles/3.16.0-rc4/CMakeSystem.cmake
+D:/vcpkg/vcpkg/installed/x86-windows/share/glew/CopyImportedTargetProperties.cmake
+D:/vcpkg/vcpkg/installed/x86-windows/share/glew/glew-config.cmake
+D:/vcpkg/vcpkg/installed/x86-windows/share/glew/glew-targets-debug.cmake
+D:/vcpkg/vcpkg/installed/x86-windows/share/glew/glew-targets-release.cmake
+D:/vcpkg/vcpkg/installed/x86-windows/share/glew/glew-targets.cmake
+D:/vcpkg/vcpkg/installed/x86-windows/share/glew/vcpkg-cmake-wrapper.cmake
+D:/vcpkg/vcpkg/installed/x86-windows/share/sdl2/SDL2Config.cmake
+D:/vcpkg/vcpkg/installed/x86-windows/share/sdl2/SDL2ConfigVersion.cmake
+D:/vcpkg/vcpkg/installed/x86-windows/share/sdl2/SDL2Targets-debug.cmake
+D:/vcpkg/vcpkg/installed/x86-windows/share/sdl2/SDL2Targets-release.cmake
+D:/vcpkg/vcpkg/installed/x86-windows/share/sdl2/SDL2Targets.cmake
+D:/vcpkg/vcpkg/installed/x86-windows/share/sdl2/vcpkg-cmake-wrapper.cmake
+D:/vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake

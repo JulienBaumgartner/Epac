@@ -242,17 +242,14 @@ void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1
 	float dx1_2 = secondPoint.screenPosition.x - firstPoint.screenPosition.x;
 	float dy1_2 = secondPoint.screenPosition.y - firstPoint.screenPosition.y;
 	float dz1_2 = secondPoint.screenPosition.z - firstPoint.screenPosition.z;
-	float dw1_2 = secondPoint.screenPosition.w - firstPoint.screenPosition.w;
 
 	float dx1_3 = lastPoint.screenPosition.x - firstPoint.screenPosition.x;
 	float dy1_3 = lastPoint.screenPosition.y - firstPoint.screenPosition.y;
 	float dz1_3 = lastPoint.screenPosition.z - firstPoint.screenPosition.z;
-	float dw1_3 = lastPoint.screenPosition.w - firstPoint.screenPosition.w;
 
 	float dx2_3 = lastPoint.screenPosition.x - secondPoint.screenPosition.x;
 	float dy2_3 = lastPoint.screenPosition.y - secondPoint.screenPosition.y;
 	float dz2_3 = lastPoint.screenPosition.z - secondPoint.screenPosition.z;
-	float dw2_3 = lastPoint.screenPosition.w - secondPoint.screenPosition.w;
 
 	float minX = std::min({firstPoint.screenPosition.x, secondPoint.screenPosition.x, lastPoint.screenPosition.x});
 	float maxX = std::max({firstPoint.screenPosition.x, secondPoint.screenPosition.x, lastPoint.screenPosition.x});
@@ -298,11 +295,9 @@ void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1
 
 		float xLine1;
 		float zLine1;
-		float wLine1;
 		algebra::Vec4<float> color1;
 		float xLine2 = firstPoint.screenPosition.x + dx1_3 * coef1_3;
 		float zLine2 = firstPoint.screenPosition.z + dz1_3 * coef1_3;
-		float wLine2 = firstPoint.screenPosition.w + dw1_3 * coef1_3;
 		algebra::Vec4<float> color2;
 		color2.x = firstPoint.color.x + dr1_3 * coef1_3;
 		color2.y = firstPoint.color.y + dg1_3 * coef1_3;
@@ -311,7 +306,6 @@ void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1
 		if (y > secondPoint.screenPosition.y) {
 			xLine1 = secondPoint.screenPosition.x + dx2_3 * coef2_3;
 			zLine1 = secondPoint.screenPosition.z + dz2_3 * coef2_3;
-			wLine1 = secondPoint.screenPosition.w + dw2_3 * coef2_3;
 			color1.x = secondPoint.color.x + (dr2_3 * coef2_3);
 			color1.y = secondPoint.color.y + (dg2_3 * coef2_3);
 			color1.z = secondPoint.color.z + (db2_3 * coef2_3);
@@ -319,7 +313,6 @@ void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1
 		else {
 			xLine1 = firstPoint.screenPosition.x + dx1_2 * coef1_2;
 			zLine1 = firstPoint.screenPosition.z + dz1_2 * coef1_2;
-			wLine1 = firstPoint.screenPosition.w + dw1_2 * coef1_2;
 			color1.x = firstPoint.color.x + (dr1_2 * coef1_2);
 			color1.y = firstPoint.color.y + (dg1_2 * coef1_2);
 			color1.z = firstPoint.color.z + (db1_2 * coef1_2);
@@ -336,7 +329,6 @@ void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1
 		{
 			std::swap(xLine1, xLine2);
 			std::swap(zLine1, zLine2);
-			std::swap(wLine1, wLine2);
 			col = color2;
 			col2 = color1;
 			dr *= -1;
@@ -344,25 +336,15 @@ void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1
 			db *= -1;
 		}
 
+		float dx = xLine2 - xLine1;
+		float dz = zLine2 - zLine1;
 		for (int x = minX; x < maxX; x++)
 		{
 			if (x > xLine1 && x < xLine2) {
 
-				int dx = xLine2 - xLine1;
+				float z = zLine1 + dz * (int)(x - xLine1);
 
-
-				int dw = wLine2 - wLine1;
-				float w = wLine1 + dw * (int)(x - xLine1);
-				float alpha = (int)(x - xLine1);
-				if (dx != 0) {
-					alpha /= dx;
-					w /= dx;
-				}
-				float b = alpha * wLine1 / ((1 - alpha)*wLine2 + alpha * wLine1);
-				float fx = ((1 - b)*xLine1 + b * xLine2) / ((1 - b)*wLine1 + b*wLine2);
-				float u = ((1 - b)*col.x + b * col2.x) / ((1 - b)*wLine1 + b*wLine2);
-				float v = ((1 - b)*col.y + b * col2.y) / ((1 - b)*wLine1 + b*wLine2);
-
+				
 				algebra::Vec4<float> color;
 				color.w = 255;
 
@@ -374,17 +356,16 @@ void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1
 				}
 				else
 				{
-					color.x = col.x + dr * (int)(x - xLine1) / wLine1 * w;
-					color.y = col.y + dg * (int)(x - xLine1) / wLine1 * w;
-					//color.x = col.x + dr * (int)(x - xLine1) / dx;
-					//color.y = col.y + dg * (int)(x - xLine1) / dx;
+					color.x = col.x + dr * (int)(x - xLine1) / dx;
+					color.y = col.y + dg * (int)(x - xLine1) / dx;
 					color.z = col.z + db * (int)(x - xLine1) / dx;
 				}
 
 				if (mesh.textureColors.size() != 0 && mesh.uv.size() > 0) 
 				{
-					float pxWidthF = std::max(0.0f, std::min(color.x * mesh.textureWidth, mesh.textureWidth - 1.0f));
-					float pxHeightF = std::max(0.0f, std::min(color.y * mesh.textureHeight, mesh.textureHeight - 1.0f));
+					float pxWidthF = std::max(0.0f, std::min(color.x * mesh.textureWidth/z, mesh.textureWidth - 1.0f));
+					float pxHeightF = std::max(0.0f, std::min(color.y * mesh.textureHeight/z, mesh.textureHeight - 1.0f));
+					//printf("%f\n", z);
 
 					int pxWidth = pxWidthF;
 					int pxHeight = pxHeightF;
@@ -407,8 +388,6 @@ void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1
 						color = mesh.textureColors[pxWidth + mesh.textureWidth*pxHeight];
 					}
 
-					
-
 					//color = mesh.textureColors[pxWidth + mesh.textureWidth*pxHeight];
 				}
 
@@ -417,7 +396,7 @@ void Image::fillTriangle(Vertex a, Vertex b, Vertex c, algebra::Vec3<float> pos1
 				color.z = (color.z + lightColor.z) / 2 * shade;
 				
 
-				drawPoint(algebra::Vec4<float>(color.x, color.y, color.z, 1), x, y, a.screenPosition.z);
+				drawPoint(algebra::Vec4<float>(color.x, color.y, color.z, 1), x, y, z);
 			}
 		}
 	}
@@ -431,6 +410,7 @@ bool Image::isVisible(Camera& cam, const algebra::Vec3<float>& vec1,
 	{
 		return false;
 	}
+	//return true;
 
 	algebra::Vec3<float> n = (vec2 - vec1) ^ (vec3 - vec1);
 	n = n.normalize();

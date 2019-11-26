@@ -6,16 +6,14 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
-#include "Window.h"
+#include "../DrawLine/Window.h"
 #include <functional>
-#include "EventsManagerExample.h"
-#include "Algebra.h";
-#include "Mesh.h"
-#include "Camera.h"
+#include "../DrawLine/Algebra.h";
+#include "../DrawLine/Mesh.h"
+#include "../DrawLine/Camera.h"
+#include "EventsManagerShaderGl.h"
 
-//#if defined(_WIN32) || defined(_WIN64)
-
-void drawLine() 
+void drawLine()
 {
 	int width = 1080;
 	int height = 720;
@@ -30,14 +28,7 @@ void drawLine()
 	cam.up = vUp;
 
 	Image image(width, height, cam);
-	Window window(image, cam, std::make_shared<EventsManagerExample>());
-
-	Mesh cube;
-
-	cube.ExtractObj("cube.obj");
-	cube.loadTexture("texture.bmp");
-
-	window.addMesh(cube);
+	Window window(image, cam, std::make_shared<EventsManagerShaderGl>());
 
 	window.run();
 }
