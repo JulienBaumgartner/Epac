@@ -7,9 +7,15 @@
     <ClCompile Include="D:\git epac\Epac\SDL DrawLine\DrawLine\EventsManagerExample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\DrawLine\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\git epac\Epac\SDL DrawLine\DrawLine\EventsManagerExample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\DrawLine\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

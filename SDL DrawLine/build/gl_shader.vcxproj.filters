@@ -4,9 +4,26 @@
     <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\gl_shader\EventsManageShaderGl.cpp">
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\EventsManagerShaderGl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\WindowShaderGl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\EventsManagerShaderGl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\WindowShaderGl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\git epac\Epac\SDL DrawLine\CMakeLists.txt" />
@@ -18,10 +35,5 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{192AF30E-3F74-3174-8AA7-C349227A3822}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\gl_shader\EventsManagerShaderGl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

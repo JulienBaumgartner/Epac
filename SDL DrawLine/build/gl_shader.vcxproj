@@ -113,8 +113,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>
-      </Message>
+      <Message></Message>
       <Command>setlocal
 powershell -noprofile -executionpolicy Bypass -file D:/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "D:/git epac/Epac/SDL DrawLine/build/Debug/gl_shader.exe" -installedDir D:/vcpkg/vcpkg/installed/x86-windows/debug/bin -OutVariable out
 if %errorlevel% neq 0 goto :cmEnd
@@ -170,8 +169,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>
-      </Message>
+      <Message></Message>
       <Command>setlocal
 powershell -noprofile -executionpolicy Bypass -file D:/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "D:/git epac/Epac/SDL DrawLine/build/Release/gl_shader.exe" -installedDir D:/vcpkg/vcpkg/installed/x86-windows/bin -OutVariable out
 if %errorlevel% neq 0 goto :cmEnd
@@ -227,8 +225,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>
-      </Message>
+      <Message></Message>
       <Command>setlocal
 powershell -noprofile -executionpolicy Bypass -file D:/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "D:/git epac/Epac/SDL DrawLine/build/MinSizeRel/gl_shader.exe" -installedDir D:/vcpkg/vcpkg/installed/x86-windows/bin -OutVariable out
 if %errorlevel% neq 0 goto :cmEnd
@@ -283,8 +280,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PostBuildEvent>
-      <Message>
-      </Message>
+      <Message></Message>
       <Command>setlocal
 powershell -noprofile -executionpolicy Bypass -file D:/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "D:/git epac/Epac/SDL DrawLine/build/RelWithDebInfo/gl_shader.exe" -installedDir D:/vcpkg/vcpkg/installed/x86-windows/bin -OutVariable out
 if %errorlevel% neq 0 goto :cmEnd
@@ -367,8 +363,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\main.cpp" />
-    <ClCompile Include="..\gl_shader\EventsManageShaderGl.cpp" />
-    <ClInclude Include="..\gl_shader\EventsManagerShaderGl.h" />
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\EventsManagerShaderGl.cpp" />
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\EventsManagerShaderGl.h" />
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\WindowShaderGl.cpp" />
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\WindowShaderGl.h" />
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Shader.h" />
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:\git epac\Epac\SDL DrawLine\build\ZERO_CHECK.vcxproj">

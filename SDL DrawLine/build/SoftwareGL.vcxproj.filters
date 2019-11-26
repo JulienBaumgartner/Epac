@@ -10,9 +10,6 @@
     <ClCompile Include="D:\git epac\Epac\SDL DrawLine\DrawLine\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\DrawLine\Window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\git epac\Epac\SDL DrawLine\DrawLine\Algebra.h">
@@ -31,9 +28,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\git epac\Epac\SDL DrawLine\DrawLine\Vertex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\DrawLine\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -365,6 +365,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\git epac\Epac\SDL DrawLine\DrawLine\main.cpp" />
     <ClCompile Include="D:\git epac\Epac\SDL DrawLine\DrawLine\EventsManagerExample.cpp" />
     <ClInclude Include="D:\git epac\Epac\SDL DrawLine\DrawLine\EventsManagerExample.h" />
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\DrawLine\Window.cpp" />
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\DrawLine\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:\git epac\Epac\SDL DrawLine\build\ZERO_CHECK.vcxproj">
