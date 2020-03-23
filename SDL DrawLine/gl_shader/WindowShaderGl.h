@@ -8,16 +8,23 @@
 #include <chrono>
 #include <ctime>
 #include <string>
+#include "Texture.h"
+#include "../DrawLine/Mesh.h"
+#include "../DrawLine/Camera.h"
+#include "Program.h"
 
 class WindowShaderGl
 {
 public:
-	WindowShaderGl(int width, int height, std::shared_ptr<EventsManagerShaderGl> events_manager);
+	WindowShaderGl(int width, int height);
 	~WindowShaderGl();
 
-	void render();
 	void init();
 	void run();
+	void imguiWindow();
+	void setIndices(char* str_indices);
+	void addPoint();
+	void removePoint(int index);
 	static void GLAPIENTRY debugMessage(GLenum source,
 		GLenum type,
 		GLuint id,
@@ -25,11 +32,15 @@ public:
 		GLsizei length,
 		const GLchar *message,
 		const void *userParam) {
-		std::cout << message << "\n";
+		if (severity != GL_DEBUG_SEVERITY_NOTIFICATION)
+		{
+			std::cout << message << "\n";
+		}
 	}
 
 	int GetWidth() { return screenWidth; }
 	int GetHeight() { return screenHeight; }
+
 protected:
 	int screenWidth;
 	int screenHeight;
@@ -40,7 +51,14 @@ protected:
 	
 	SDL_Window* window;
 	
-	std::shared_ptr<EventsManagerShaderGl> eventsManager;
+	EventsManagerShaderGl eventsManager;
+
+	// Color texture.
+	std::shared_ptr<Texture> texture1_ = nullptr;
+
+	Mesh mesh_;
+	std::shared_ptr<Program> program_ = nullptr;
+	Camera camera_;
 };
 
 

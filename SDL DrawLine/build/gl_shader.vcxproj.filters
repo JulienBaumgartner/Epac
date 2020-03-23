@@ -13,6 +13,18 @@
     <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Vertex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Program.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\EventsManagerShaderGl.h">
@@ -22,6 +34,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Vertex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Program.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

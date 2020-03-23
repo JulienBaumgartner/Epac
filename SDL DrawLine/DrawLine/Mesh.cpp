@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-
+#include "../gl_shader/Vertex.h"
 
 
 Mesh::Mesh()
@@ -125,6 +125,55 @@ void Mesh::loadTexture(const char* path)
 
 
 }
+
+void Mesh::ComputeFlat()
+{
+	std::vector<Vertex> vertices;
+	for (size_t i = 0; i < indices.size(); i++)
+	{
+		Vertex v(points[indices[i]], normals[indicesNormals[i]], uv[indicesUv[i]]);
+		flatIndices_.push_back(i);
+		vertices.push_back(v);
+	}
+
+	for (const auto& vertex : vertices)
+	{
+		auto point = vertex.GetPositions();
+		auto normal = vertex.GetNormal();
+		auto texture = vertex.GetTextures();
+
+		flatPositions_.push_back(point.x);
+		flatPositions_.push_back(point.y);
+		flatPositions_.push_back(point.z);
+		flatNormals_.push_back(normal.x);
+		flatNormals_.push_back(normal.y);
+		flatNormals_.push_back(normal.z);
+		flatTextures_.push_back(texture.x);
+		flatTextures_.push_back(texture.y);
+	}
+}
+
+const std::vector<float>& Mesh::GetFlatPositions() const
+{
+	return flatPositions_;
+}
+
+const std::vector<float>& Mesh::GetFlatNormals() const
+{
+	return flatNormals_;
+}
+
+const std::vector<float>& Mesh::GetFlatTextures() const
+{
+	return flatTextures_;
+}
+
+const std::vector<unsigned int>& Mesh::GetFlatIndices() const
+{
+	return flatIndices_;
+}
+
+
 
 void Mesh::importF(std::vector<std::string> str)
 {

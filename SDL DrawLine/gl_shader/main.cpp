@@ -12,13 +12,14 @@
 #include "../DrawLine/Mesh.h"
 #include "../DrawLine/Camera.h"
 #include "EventsManagerShaderGl.h"
+#include <imgui.h>
 
 void shaderGl()
 {
 	int width = 720;
 	int height = 720;
 
-	WindowShaderGl window(width, height, std::make_shared<EventsManagerShaderGl>());
+	WindowShaderGl window(width, height);
 
 	window.run();
 }

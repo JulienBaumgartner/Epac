@@ -9,8 +9,11 @@ bool EventsManagerShaderGl::manageEvents(SDL_Event event)
 		switch (event.key.keysym.sym) {
 		case SDLK_ESCAPE:
 			return false;
-		}
+		case SDLK_DOLLAR:
+			showConsole = !showConsole;
 
+			break;
+		}
 		break;
 	case SDL_QUIT:
 		printf("quit\n");

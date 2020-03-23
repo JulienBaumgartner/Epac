@@ -11,6 +11,11 @@ public:
 	std::vector<algebra::Vec4<float>> project(const std::vector<algebra::Vec4<float>>& points, int w, int h, const algebra::Matrix4<float>& m_view) const;
 	bool ExtractObj(const std::string& path);
 	void loadTexture(const char* path);
+	void ComputeFlat();
+	const std::vector<float>& GetFlatPositions() const;
+	const std::vector<float>& GetFlatNormals() const;
+	const std::vector<float>& GetFlatTextures() const;
+	const std::vector<unsigned int>& GetFlatIndices() const;
 
 	std::vector<algebra::Vec4<float>> points;
 	std::vector<algebra::Vec4<float>> colors;
@@ -26,5 +31,12 @@ public:
 
 protected:
 	void importF(std::vector<std::string> str);
+
+	std::vector<float> flatPositions_ = {};
+	std::vector<float> flatNormals_ = {};
+	std::vector<float> flatTextures_ = {};
+	std::vector<unsigned int> flatIndices_ = {};
+
+	
 };
 

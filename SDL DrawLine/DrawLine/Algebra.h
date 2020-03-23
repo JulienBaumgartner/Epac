@@ -1053,6 +1053,37 @@ namespace algebra
 				            0, 0, -zf*zn/(zf-zn), 0);
 		}
 
+		static Matrix4<T> perspectiveMatrix(T w, T h, T zn, T zf, T fov) {
+			return Matrix4((h / w) * 1 / std::tan(fov / 2), 0, 0, 0,
+				0, 1 / std::tan(fov / 2), 0, 0,
+				0, 0, -(zf + zn) / (zf - zn), -1,
+				0, 0, -(2* zf * zn) / (zf - zn), 0);
+		}
+
+		static Matrix4<T> rotateMatrixX(T degree) {
+			T rad = degree * M_PI / 180;
+			return Matrix4(1, 0, 0,0,
+				0, std::cos(rad), -std::sin(rad),0,
+				0, std::sin(rad), std::cos(rad),0,
+				0,0,0,1);
+		}
+
+		static Matrix4<T> rotateMatrixY(T degree) {
+			T rad = degree * M_PI / 180;
+			return Matrix4(std::cos(rad), 0, std::sin(rad), 0,
+				0, 1, 0, 0,
+				-std::sin(rad), 0, std::cos(rad), 0,
+			0,0,0,1);
+		}
+
+		static Matrix4<T> rotateMatrixZ(T degree) {
+			T rad = degree * M_PI / 180;
+			return Matrix4(std::cos(rad), -std::sin(rad), 0,0,
+				std::sin(rad), std::cos(rad), 0,0,
+				0, 0, 1,0,
+				0,0,0,1);
+		}
+
 		T m11;
 		T m12;
 		T m13;

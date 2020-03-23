@@ -19,32 +19,32 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{EC453820-24E0-3718-9671-FCC7EAE3B95C}</ProjectGuid>
+    <ProjectGuid>{6E472D8C-FA16-3AD6-A47C-2F15B983514C}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
-    <ProjectName>gl_shader</ProjectName>
+    <ProjectName>imgui_impl</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
     <VcpkgEnabled>false</VcpkgEnabled>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
@@ -58,33 +58,25 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\git epac\Epac\SDL DrawLine\build\Debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">gl_shader.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">gl_shader</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
-    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">imgui_impl.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">imgui_impl</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\git epac\Epac\SDL DrawLine\build\Release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">gl_shader.dir\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">gl_shader</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
-    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">imgui_impl.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">imgui_impl</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\git epac\Epac\SDL DrawLine\build\MinSizeRel\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">gl_shader.dir\MinSizeRel\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">gl_shader</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.exe</TargetExt>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
-    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">imgui_impl.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">imgui_impl</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\git epac\Epac\SDL DrawLine\build\RelWithDebInfo\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">gl_shader.dir\RelWithDebInfo\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">gl_shader</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.exe</TargetExt>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
-    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">imgui_impl.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">imgui_impl</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -102,45 +94,23 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <PostBuildEvent>
-      <Message></Message>
-      <Command>setlocal
-powershell -noprofile -executionpolicy Bypass -file D:/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "D:/git epac/Epac/SDL DrawLine/build/Debug/gl_shader.exe" -installedDir D:/vcpkg/vcpkg/installed/x86-windows/debug/bin -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-    </PostBuildEvent>
-    <Link>
-      <AdditionalDependencies>Debug\SoftwareGL.lib;Debug\imgui_impl.lib;D:\vcpkg\vcpkg\installed\x86-windows\debug\lib\freetyped.lib;D:\vcpkg\vcpkg\installed\x86-windows\debug\lib\SDL2d.lib;D:\vcpkg\vcpkg\installed\x86-windows\debug\lib\manual-link\SDL2maind.lib;D:\vcpkg\vcpkg\installed\x86-windows\debug\lib\glew32d.lib;D:\vcpkg\vcpkg\installed\x86-windows\debug\lib\imguid.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/git epac/Epac/SDL DrawLine/build/Debug/gl_shader.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/git epac/Epac/SDL DrawLine/build/Debug/gl_shader.pdb</ProgramDataBaseFile>
-      <SubSystem>Console</SubSystem>
-    </Link>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -158,45 +128,23 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <PostBuildEvent>
-      <Message></Message>
-      <Command>setlocal
-powershell -noprofile -executionpolicy Bypass -file D:/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "D:/git epac/Epac/SDL DrawLine/build/Release/gl_shader.exe" -installedDir D:/vcpkg/vcpkg/installed/x86-windows/bin -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-    </PostBuildEvent>
-    <Link>
-      <AdditionalDependencies>Release\SoftwareGL.lib;Release\imgui_impl.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\freetype.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\SDL2.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\manual-link\SDL2main.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\glew32.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\imgui.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
-      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/git epac/Epac/SDL DrawLine/build/Release/gl_shader.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/git epac/Epac/SDL DrawLine/build/Release/gl_shader.pdb</ProgramDataBaseFile>
-      <SubSystem>Console</SubSystem>
-    </Link>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -214,45 +162,23 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <PostBuildEvent>
-      <Message></Message>
-      <Command>setlocal
-powershell -noprofile -executionpolicy Bypass -file D:/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "D:/git epac/Epac/SDL DrawLine/build/MinSizeRel/gl_shader.exe" -installedDir D:/vcpkg/vcpkg/installed/x86-windows/bin -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-    </PostBuildEvent>
-    <Link>
-      <AdditionalDependencies>MinSizeRel\SoftwareGL.lib;MinSizeRel\imgui_impl.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\freetype.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\SDL2.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\manual-link\SDL2main.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\glew32.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\imgui.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
-      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/git epac/Epac/SDL DrawLine/build/MinSizeRel/gl_shader.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/git epac/Epac/SDL DrawLine/build/MinSizeRel/gl_shader.pdb</ProgramDataBaseFile>
-      <SubSystem>Console</SubSystem>
-    </Link>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -269,41 +195,19 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\vcpkg\vcpkg\installed\x86-windows\include\SDL2;D:\vcpkg\vcpkg\installed\x86-windows\include;D:\vcpkg\vcpkg\installed\x86-windows\include\freetype;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <PostBuildEvent>
-      <Message></Message>
-      <Command>setlocal
-powershell -noprofile -executionpolicy Bypass -file D:/vcpkg/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "D:/git epac/Epac/SDL DrawLine/build/RelWithDebInfo/gl_shader.exe" -installedDir D:/vcpkg/vcpkg/installed/x86-windows/bin -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-    </PostBuildEvent>
-    <Link>
-      <AdditionalDependencies>RelWithDebInfo\SoftwareGL.lib;RelWithDebInfo\imgui_impl.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\freetype.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\SDL2.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\manual-link\SDL2main.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\glew32.lib;D:\vcpkg\vcpkg\installed\x86-windows\lib\imgui.lib;user32.lib;gdi32.lib;winmm.lib;imm32.lib;ole32.lib;oleaut32.lib;version.lib;uuid.lib;advapi32.lib;setupapi.lib;shell32.lib;dinput8.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    <Lib>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/git epac/Epac/SDL DrawLine/build/RelWithDebInfo/gl_shader.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/git epac/Epac/SDL DrawLine/build/RelWithDebInfo/gl_shader.pdb</ProgramDataBaseFile>
-      <SubSystem>Console</SubSystem>
-    </Link>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="D:\git epac\Epac\SDL DrawLine\CMakeLists.txt">
@@ -362,21 +266,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\main.cpp" />
-    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\EventsManagerShaderGl.cpp" />
-    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\EventsManagerShaderGl.h" />
-    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\WindowShaderGl.cpp" />
-    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\WindowShaderGl.h" />
-    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Shader.h" />
-    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Shader.cpp" />
-    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Texture.h" />
-    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Texture.cpp" />
-    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Image.h" />
-    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Image.cpp" />
-    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Vertex.h" />
-    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Vertex.cpp" />
-    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Program.h" />
-    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\gl_shader\Program.cpp" />
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\imgui_impl\imgui_impl_sdl.h" />
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\imgui_impl\imgui_impl_sdl.cpp" />
+    <ClInclude Include="D:\git epac\Epac\SDL DrawLine\imgui_impl\imgui_impl_opengl3.h" />
+    <ClCompile Include="D:\git epac\Epac\SDL DrawLine\imgui_impl\imgui_impl_opengl3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:\git epac\Epac\SDL DrawLine\build\ZERO_CHECK.vcxproj">
@@ -384,14 +277,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </ProjectReference>
-    <ProjectReference Include="D:\git epac\Epac\SDL DrawLine\build\SoftwareGL.vcxproj">
-      <Project>{0FD84486-D0E3-353E-A329-23E79911809D}</Project>
-      <Name>SoftwareGL</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\git epac\Epac\SDL DrawLine\build\imgui_impl.vcxproj">
-      <Project>{6E472D8C-FA16-3AD6-A47C-2F15B983514C}</Project>
-      <Name>imgui_impl</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
